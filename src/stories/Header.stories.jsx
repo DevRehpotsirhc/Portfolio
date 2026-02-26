@@ -19,6 +19,7 @@ export const Default = () => {
     )
 
 }
+
 export const Content = () => {
     return (
         <div className="sticky size-full bg-background-light pt-20 px-10 dark:bg-background-dark">
