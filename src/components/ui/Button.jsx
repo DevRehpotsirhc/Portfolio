@@ -8,7 +8,7 @@ export const Button = ({ style = "", type = "button", disabled = false, onClick 
         warning: "border-warning-600 bg-warning-500 text-warning-900 group-hover:shadow-warning-600/90 dark:border-warning-800 dark:group-hover:shadow-warning-500/50 dark:bg-warning-700! dark:text-black",
     };
 
-    const appliedVariant = variantStyles[style] || "border-slate-300 dark:border-slate-700 dark:group-hover:shadow-secundary-500/50";
+    const appliedVariant = variantStyles[style] || "border-slate-300 bg-background-light! dark:bg-background-dark! dark:border-slate-700 dark:group-hover:shadow-secundary-500/50";
 
     return (
         <button
@@ -18,7 +18,7 @@ export const Button = ({ style = "", type = "button", disabled = false, onClick 
             className="group relative cursor-pointer w-full flex items-center text-slate-800 dark:text-slate-400 gap-2 p-2"
         >
             <span
-                className={`flex w-full font-semibold items-center justify-center border border-b-8 rounded-xl py-2 px-3 shadow-lg group-hover:shadow-medium-500/40 transition-all duration-200 backdrop-blur-md cursor-pointer
+                className={`flex w-full font-semibold items-center justify-center border border-b-8 rounded-xl py-2 px-3 shadow-md group-hover:shadow-medium-500/40 transition-all duration-200 backdrop-blur-md cursor-pointer
                 bg-background-light/50
                 dark:bg-background-dark/70
                 ${appliedVariant}
