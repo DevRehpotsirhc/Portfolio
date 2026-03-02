@@ -14,7 +14,7 @@ export default {
 
 export const Default = () => {
     return (
-        <div className="absolute size-full bg-background-light pt-20 px-10 dark:bg-background-dark">
+        <div className="absolute flex flex-col size-full bg-background-light dark:bg-background-dark">
             <Button
                 inside={<Moon className="size-7" />}
                 insideStyle="p-2!"
@@ -24,13 +24,19 @@ export const Default = () => {
 
             <Button
                 inside={
-                    <span className="flex items-center font-semibold gap-2">
+                    <span className="flex flex-wrap items-center justify-center font-semibold gap-2">
                         <Moon className="size-7" />
-                        DarkMode
+                        Activar el modo oscuro del sistema
                     </span>
                 }
-                onClick={() => alert("¡Hizo click!")}
             />
+
+            <Button style="primary" inside="Registrar" />
+            <Button style="secundary" inside="Enviar" />
+            <Button style="medium" inside="Seleccionar" />
+            <Button style="complementary" inside="+ Agregar" />
+            <Button style="danger" inside="Cancelar" />
+            <Button style="warning" inside="Volver a inicio" />
         </div>
     )
 
