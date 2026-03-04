@@ -1,5 +1,18 @@
 /** @type { import('@storybook/react-vite').Preview } */
 import "../src/index.css";
+if (typeof window !== "undefined") {
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const applyTheme = (isDark) => {
+    document.documentElement.classList.toggle("dark", isDark);
+  };
+
+  applyTheme(media.matches);
+
+  media.addEventListener("change", (e) => {
+    applyTheme(e.matches);
+  });
+}
 const preview = {
   parameters: {
     controls: {
