@@ -1,12 +1,16 @@
 import { useState, useEffect, useRef } from "react"
-import { Cog, Menu, X } from "lucide-react"
+import { Cog, Menu, X, ArrowDownToLine } from "lucide-react"
 import { Button } from "./Button"
+import { useDarkmode } from "../../hooks/useDarkmode"
 
 export const Header = () => {
     const [open, setOpen] = useState(false)
+    const [toggle, setToggle] = useState(false);
+    const isDark = useDarkmode();
 
     const menu = useRef(null)
     const buttonRef = useRef(null)
+    const sectionRef = useRef(null)
 
     const links = [
         { name: "About", href: "#", showClass: "min-[420px]:block", hideClass: "min-[420px]:hidden" },
@@ -25,33 +29,21 @@ export const Header = () => {
             ) {
                 setOpen(false)
             }
-        }
-
-        if (open) {
-            document.addEventListener("mousedown", handleClickOutside)
-        }
-
-        return () => document.removeEventListener("mousedown", handleClickOutside)
-    }, [open])
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
             if (
-                menu.current &&
-                !menu.current.contains(event.target) &&
-                buttonRef.current &&
-                !buttonRef.current.contains(event.target)
+                toggle &&
+                sectionRef.current &&
+                !sectionRef.current.contains(event.target)
             ) {
-                setOpen(false)
+                setToggle(false)
             }
         }
 
-        if (open) {
+        if (open || toggle) {
             document.addEventListener("mousedown", handleClickOutside)
         }
 
         return () => document.removeEventListener("mousedown", handleClickOutside)
-    }, [open])
+    }, [open, toggle])
 
     useEffect(() => {
         const handleResize = () => {
@@ -65,23 +57,35 @@ export const Header = () => {
     }, [])
 
     return (
-        <div className="fixed left-1/2 -translate-x-1/2 top-2 w-[85%] max-w-300 z-20 dark:text-slate-400 text-slate-600 font-semibold max-[980px]:text-xs min-[1000px]:text-base">
+        <div className="fixed left-1/2 -translate-x-1/2 top-2 w-[85%] max-w-300 z-20 dark:text-slate-400 text-slate-600 font-semibold max-[980px]:text-xs min-[1000px]:text-base transform-gpu transform-3d">
             <header
                 className="flex items-center justify-between sm:justify-between align-middle
-                p-2 sm:px-5 h-[15%] max-h-12 top-2 rounded-xl
-                bg-background-light/70 backdrop-blur-md shadow-lg shadow-medium-500/30 border border-b-8 border-slate-300
-                dark:bg-background-dark/70 dark:border-slate-600 dark:shadow-secundary-500/30"
+                p-2 px-4 sm:px-5 h-[25dvh] max-h-17 top-2 rounded-xl bg-background-light backdrop-blur-md isolate shadow-lg shadow-medium-500/30 border border-b-8 border-slate-300
+                dark:bg-background-dark dark:border-slate-600 dark:shadow-secundary-500/30"
             >
                 <section
+                    ref={sectionRef}
                     className="group relative flex items-center justify-center align-middle gap-2"
+                    onClick={() => setToggle(!toggle)}
+                    onMouseEnter={() => setToggle(true)}
+                    onMouseLeave={() => setToggle(false)}
                 >
-                    <Cog className="size-6 group-hover:rotate-180 transition-all transform duration-500" />
+                    <Cog className={`size-6 group-hover:rotate-180 ${toggle ? "rotate-180" : ""} transition-all transform duration-500`} />
                     <span>Christopher Aponte</span>
 
-                    <article className="absolute top-full left-0 w-full max-w-[50dvh] -z-10 opacity-0 -translate-y-3 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out"
+                    <article className={`absolute top-full -left-7 max-[640px]:-left-6 w-[35dvw] min-w-full -z-10 opacity-0 -translate-y-3 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out ${toggle ? "opacity-100 translate-y-0 pointer-events-auto" : ""}`}
                     >
-                        <div className="flex flex-col mt-3 max-h-[25dvh] overflow-y-auto p-2">
-                            <Button insideStyle="text-slate-600 dark:text-slate-400" inside="Download CV" />
+                        <div className="flex flex-col w-full mt-7 max-h-[25dvh] overflow-y-auto">
+                            <Button
+                                style={isDark ? "secundary" : "medium"}
+                                others="w-full! m-0!"
+                                inside={
+                                    <span className="flex gap-1 items-center">
+                                        <ArrowDownToLine className="size-5 min-[980px]:size-6" />
+                                        <p>Download CV</p>
+                                    </span>
+                                }
+                            />
                         </div>
                     </article>
                 </section>
@@ -122,7 +126,7 @@ export const Header = () => {
 
             </header>
             {open && (
-                <div ref={menu} className="absolute top-full right-0 mt-2 w-[35%] bg-background-light/70 dark:bg-background-dark/70 dark:border-slate-700 backdrop-blur-md shadow-lg p-3 flex flex-col space-y-4 overflow-x-auto border border-slate-300 rounded-xl">
+                <div ref={menu} className="absolute top-full right-0 mt-2 w-[35%] bg-background-light dark:bg-background-dark dark:border-slate-700 backdrop-blur-md shadow-lg p-3 flex flex-col space-y-4 overflow-x-auto border border-slate-300 rounded-xl">
                     <span className="text-xs font-light">
                         Access menu
                         <div className="flex mt-1 bg-slate-300 dark:bg-slate-700 w-full h-px"></div>
