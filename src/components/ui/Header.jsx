@@ -57,15 +57,15 @@ export const Header = () => {
     }, [])
 
     return (
-        <div className="fixed left-1/2 -translate-x-1/2 top-2 w-[85%] max-w-300 z-20 dark:text-slate-400 text-slate-600 font-semibold max-[980px]:text-xs min-[1000px]:text-base transform-gpu transform-3d">
+        <div className="fixed left-1/2 -translate-x-1/2 top-2 w-[85%] max-w-300 z-20 dark:text-slate-400 text-slate-600 font-semibold max-[720px]:text-sm min-[1000px]:text-base transform-gpu transform-3d">
             <header
                 className="flex items-center justify-between sm:justify-between align-middle
-                p-2 px-4 sm:px-5 h-[25dvh] max-h-17 top-2 rounded-xl bg-background-light backdrop-blur-md isolate shadow-lg shadow-medium-500/30 border border-b-8 border-slate-300
-                dark:bg-background-dark dark:border-slate-600 dark:shadow-secundary-500/30"
+                p-2 px-4 sm:px-5 h-[25dvh] max-h-17 top-2 rounded-xl bg-background-light backdrop-blur-md isolate shadow-lg shadow-medium-500/50 border border-b-9 rounded-b-2xl border-slate-300
+                dark:bg-background-dark dark:border-dark/60 dark:shadow-secundary-500/30"
             >
                 <section
                     ref={sectionRef}
-                    className="group relative flex items-center justify-center align-middle gap-2"
+                    className="group relative flex items-center justify-center align-middle gap-2 cursor-default"
                     onClick={() => setToggle(!toggle)}
                     onMouseEnter={() => setToggle(true)}
                     onMouseLeave={() => setToggle(false)}
@@ -73,12 +73,12 @@ export const Header = () => {
                     <Cog className={`size-6 group-hover:rotate-180 ${toggle ? "rotate-180" : ""} transition-all transform duration-500`} />
                     <span>Christopher Aponte</span>
 
-                    <article className={`absolute top-full -left-7 max-[640px]:-left-6 w-[35dvw] min-w-full -z-10 opacity-0 -translate-y-3 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out ${toggle ? "opacity-100 translate-y-0 pointer-events-auto" : ""}`}
+                    <article className={`absolute top-full -left-7 max-[640px]:-left-6 w-[35dvw] max-[300px]: min-w-[calc(100%+20px)] -z-10 opacity-0 -translate-y-3 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out ${toggle ? "opacity-100 translate-y-0 pointer-events-auto" : ""}`}
                     >
-                        <div className="flex flex-col w-full mt-7 max-h-[25dvh] overflow-y-auto">
+                        <div className="flex flex-col w-full mt-9 max-h-[70dvh] overflow-y-auto">
                             <Button
                                 style={isDark ? "secundary" : "medium"}
-                                others="w-full! m-0!"
+                                others="w-full! m-0! pt-0"
                                 inside={
                                     <span className="flex gap-1 items-center">
                                         <ArrowDownToLine className="size-5 min-[980px]:size-6" />
@@ -126,10 +126,10 @@ export const Header = () => {
 
             </header>
             {open && (
-                <div ref={menu} className="absolute top-full right-0 mt-2 w-[35%] bg-background-light dark:bg-background-dark dark:border-slate-700 backdrop-blur-md shadow-lg p-3 flex flex-col space-y-4 overflow-x-auto border border-slate-300 rounded-xl">
+                <div ref={menu} className="absolute top-full right-0 mt-2 w-[32dvw] max-[300px]:w-[50dvw] bg-background-light dark:bg-background-dark dark:border-dark/60 backdrop-blur-md shadow-lg p-3 flex flex-col space-y-4 overflow-x-auto border border-slate-300 border-b-10 rounded-b-2xl rounded-xl shadow-medium-500/30 dark:shadow-secundary-500/15">
                     <span className="text-xs font-light">
                         Access menu
-                        <div className="flex mt-1 bg-slate-300 dark:bg-slate-700 w-full h-px"></div>
+                        <div className="flex mt-1 bg-slate-300 dark:bg-dark w-full h-px"></div>
                     </span>
                     {links.map((link) => (
                         <a

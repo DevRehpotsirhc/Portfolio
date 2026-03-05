@@ -89,6 +89,7 @@ module.exports = {
         },
         "background-light": "#EBF2FA",
         "background-dark": "#050D14",
+        "dark": "#0E2539"
       },
       fontFamily: {
         display: ["Inter", 'system-ui', 'font-sans', "sans-serif"],

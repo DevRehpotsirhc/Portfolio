@@ -8,7 +8,7 @@ export const Button = ({ style = "", type = "button", disabled = false, onClick 
         warning: "border-warning-600 bg-warning-500 text-warning-900 group-hover/btn:shadow-warning-600/90 dark:border-warning-800 dark:group-hover/btn:shadow-warning-500/50 dark:bg-warning-700! dark:text-black",
     };
 
-    const appliedVariant = variantStyles[style] || "border-slate-300 bg-background-light! dark:bg-background-dark! dark:border-slate-700 dark:group-hover/btn:shadow-secundary-500/50";
+    const appliedVariant = variantStyles[style] || "border-slate-300 bg-background-light! dark:bg-background-dark! dark:border-dark dark:group-hover/btn:shadow-secundary-500/50";
 
     return (
         <button
