@@ -1,4 +1,4 @@
-export const Button = ({ style = "", type = "button", disabled = false, onClick = null, inside = "", byside = "", insideStyle = "", bysideStyle = "", others = "" }) => {
+export const Button = ({ style = "", type = "button", disabled = false, onClick = null, inside = "", byside = "", insideStyle = "", bysideStyle = "", others = "", title = "" }) => {
     const variantStyles = {
         primary: "border-primary-700 bg-primary-600 text-primary-50 group-hover/btn:shadow-primary-500/90 dark:bg-primary-600 dark:text-primary-50 dark:border-primary-700 dark:group-hover/btn:shadow-primary-500/90",
         secundary: "border-secundary-600 bg-secundary-500 text-secundary-900 group-hover/btn:shadow-secundary-500/90 dark:bg-secundary-600! dark:text-black dark:border-secundary-700 dark:group-hover/btn:shadow-secundary-500/90",
@@ -13,6 +13,7 @@ export const Button = ({ style = "", type = "button", disabled = false, onClick 
     return (
         <button
             type={type}
+            title={title}
             onClick={onClick}
             disabled={disabled}
             className={`group/btn relative cursor-pointer w-full flex items-center text-slate-800 dark:text-slate-400 gap-2 p-2 ${others}`}
