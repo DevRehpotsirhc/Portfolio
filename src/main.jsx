@@ -1,17 +1,13 @@
-import { StrictMode } from 'react'
+import { DarkmodeProvider } from './context/DarkmodeContext.jsx'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import { StrictMode } from 'react'
 import App from './App.jsx'
-
-const media = window.matchMedia('(prefers-color-scheme: dark)')
-document.documentElement.classList.toggle('dark', media.matches)
-
-media.addEventListener('change', e => {
-  document.documentElement.classList.toggle('dark', e.matches)
-})
+import './index.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <DarkmodeProvider>
+      <App />
+    </DarkmodeProvider>
+  </StrictMode>
 )
