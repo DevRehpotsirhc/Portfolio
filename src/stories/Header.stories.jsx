@@ -1,8 +1,8 @@
-import { Header } from "../components/ui/Header";
-import { Footer } from "../components/ui/Footer";
+import { Header } from "../components/layouts/Header";
+import { Footer } from "../components/layouts/Footer";
 
 export default {
-    title: "Components/Header",
+    title: "Layouts/Header",
     component: Header,
     parameters: {
         layout: "fullscreen",

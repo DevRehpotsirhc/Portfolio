@@ -1,9 +1,12 @@
 import { Cog, Menu, X, ArrowDownToLine, Moon, Sun, Linkedin, Github } from "lucide-react"
-import { useClickOutside } from "../../hooks/useClickOutside"
 import { useDarkmodeContext } from "../../context/DarkmodeContext"
+import { useClickOutside } from "../../hooks/useClickOutside"
+import cv from "../../assets/CV - Christopher Aponte.pdf"
 import { useState, useEffect, useRef } from "react"
-import { Button } from "./Button"
-import { Toggle } from "./Toggle"
+import { Button } from "../ui/Button"
+import { Toggle } from "../ui/Toggle"
+
+
 
 export const Header = ({ about = "", experience = "", skills = "", projects = "" }) => {
     const [open, setOpen] = useState(false)
@@ -44,6 +47,15 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
         { name: "Projects", href: projects !== "" ? projects : "#", showClass: "min-[720px]:block", hideClass: "min-[720px]:hidden" },
     ]
 
+    const handleDownloadCV = () => {
+        const link = document.createElement('a');
+        link.href = cv;
+        link.download = 'Christopher_Aponte_CV.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
     return (
         <main className="flex h-23">
             <div className="fixed left-1/2 -translate-x-1/2 top-2 w-[85%] max-w-300 z-20 dark:text-slate-400 text-slate-600 font-semibold max-[720px]:text-sm min-[1000px]:text-base transform-gpu transform-3d">
@@ -75,13 +87,13 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
                                             <p>Download CV</p>
                                         </span>
                                     }
-                                    onClick={() => alert("¡Hizo click!")}
+                                    onClick={handleDownloadCV}
                                 />
                                 <div className="flex flex-wrap items-center gap-2 m-auto">
                                     <Toggle
                                         inactiveStyle="bg-dark!"
-                                        activeIcon={<Sun className="text-yellow-400" />}
-                                        inactiveIcon={<Moon className="text-slate-200" />}
+                                        activeIcon={<Sun className="text-amber-300 stroke-[2.8px]" />}
+                                        inactiveIcon={<Moon className="text-slate-200 stroke-[2.8px]" />}
                                         value={darkMode}
                                         onChange={setDarkMode}
                                         title="Darkmode"

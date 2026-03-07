@@ -1,7 +1,7 @@
-import { Footer } from "../components/ui/Footer";
+import { Footer } from "../components/layouts/Footer";
 
 export default {
-    title: "Components/Footer",
+    title: "Layouts/Footer",
     component: Footer,
     parameters: {
         layout: "fullscreen",
@@ -21,8 +21,8 @@ export const Default = () => {
 
 export const Content = () => {
     return (
-        <div className="sticky size-full bg-background-light dark:bg-background-dark">
-            <main>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam eum et voluptatum quos mollitia velit ipsam eligendi culpa, voluptatibus, ipsa deleniti nihil quod facilis necessitatibus tempora doloremque excepturi tenetur voluptatem!
+        <div className="sticky min-h-dvh size-full bg-background-light dark:bg-background-dark">
+            <main className="text-black dark:text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam eum et voluptatum quos mollitia velit ipsam eligendi culpa, voluptatibus, ipsa deleniti nihil quod facilis necessitatibus tempora doloremque excepturi tenetur voluptatem!
             Aspernatur voluptatum excepturi voluptates ut, repellendus repellat ullam fugit voluptas, aut dicta debitis porro odit adipisci provident veniam sequi, beatae quidem facere sapiente minima temporibus dolores consequuntur? Expedita, soluta consequatur!
             Expedita, accusantium officia repudiandae similique tenetur odit obcaecati vitae mollitia ab, a omnis unde doloremque saepe! Expedita repellat labore enim similique, ad mollitia accusamus sunt corrupti ab minus quasi animi?
             Amet excepturi laudantium officia aliquid eum unde, vitae culpa ea maiores nobis fugiat enim nemo dicta a? Velit accusantium modi eos ad asperiores perferendis veritatis quae distinctio. Nostrum, asperiores at.
