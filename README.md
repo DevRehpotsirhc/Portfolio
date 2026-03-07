@@ -1,102 +1,103 @@
-# Bienvenido a mi Portafolio
+# Welcome to my Portfolio
 
 <p align="left">
-  <a href="mailto:christopher4ponte@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-2563EB?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>&nbsp;&nbsp;
-  <a href="https://wa.me/573194749249?text=Hola%20vengo%20desde%20tu%20portafolio,%20me%20interesar%C3%ADa%20hablar%20contigo"><img src="https://img.shields.io/badge/WhatsApp-Contact-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp"></a>&nbsp;&nbsp;
-  <a href="https://www.linkedin.com/in/christopher-aponte/"><img src="https://img.shields.io/badge/LinkedIn-Conect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+    <a href="mailto:christopher4ponte@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-2563EB?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>&nbsp;&nbsp;
+    <a href="https://wa.me/573194749249?text=Hi%20I%20come%20from%20your%20portfolio,%20I%20would%20be%20interested%20in%20talking%20to%20you"><img src="https://img.shields.io/badge/WhatsApp-Contact-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp"></a>&nbsp;&nbsp;
+    <a href="https://www.linkedin.com/in/christopher-aponte/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
 </p>
 
-Hola, soy *Christopher Aponte*, ganador nacional en la categoría de inteligencia artificial con `IBM` de jurado. Desarrollador de software y cientifico de datos con más de 2 años de experiencia en backend, analítica de datos y entrenamiento de IA.
+Hi, I'm *Christopher Aponte*, national winner in the artificial intelligence category with `IBM` as judge. Software developer and data scientist with over 2 years of experience in backend, data analytics, and AI training.
 
-Anteriormente tenía otro repositorio para este objetivo, sin embargo quería renovarlo desde cero. Este proyecto estará hecho enteramente en `frontend` usando `React` como principal tecnología.
+I previously had another repository for this purpose, but wanted to renovate it from scratch. This project will be built entirely in `frontend` using `React` as the main technology.
 
 ```py
 # Python
 if __name__ == '__main__':
-    print("Ahora verás un resumen de mi portafolio :D")
+        print("Now you'll see a summary of my portfolio :D")
 ```
 
-# Resumen (Tipo CV)
+# Summary (CV Type)
 
 Christopher José Aponte Ovalles
 
-> Teléfono: +573194749249
+> Phone: +573194749249
 >
-> Correo: christopher4ponte@gmail.com
+> Email: christopher4ponte@gmail.com
 >
 > LinkedIn: https://www.linkedin.com/in/christopher-aponte/
-    
-Desarrollador de software `fullstack` y científico de datos con más de 2 años de experiencia en automátizaciones, análisis de datos financieros, `entrenamiento de IA` y desarrollo de soluciones backend y frontend. Proactivo, adaptable y orientado a resultados.
+        
+`Fullstack` software developer and data scientist with over 2 years of experience in automations, financial data analysis, `AI training`, and backend and frontend development. Proactive, adaptable, and results-oriented.
 
-## Experiencia Laboral
+## Work Experience
 
-- **Desarrollador Full Stack en Expertos Consulting [08/2024] - [05/2026]**: 
-    - Aplicación web a medida para `gestión de compras` internas, inventario y estructura organizacional, con generación de reportes y estadísticas.
+- **Full Stack Developer at Expertos Consulting [08/2024] - [05/2026]**: 
+        - Custom web application for internal `purchase management`, inventory, and organizational structure, with report and statistics generation.
 
-    - Implementación de `API REST` segura con autenticación JWT, gestión de usuarios, roles y permisos, e integración de notificaciones por correo.
+        - Implementation of secure `REST API` with JWT authentication, user management, roles and permissions, and email notification integration.
 
-    - Automatización de reportes diarios mediante `scripts` en Python y tareas programadas, incluyendo herramienta de escritorio para su administración.
+        - Automation of daily reports using Python `scripts` and scheduled tasks, including desktop tool for administration.
 
-    - Realización de `testing` (pruebas unitarias, de integración, de extremo a extremo y de UI/UX), despliegues, levantamiento de requerimientos y presentaciones para líderes de área y coordinadores.
+        - Performance of `testing` (unit, integration, end-to-end, and UI/UX tests), deployments, requirement gathering, and presentations to area leaders and coordinators.
 
-- **Monitor en Servicio Nacional de Aprendizaje [03/2024] - [08/2024]**:
-    - Gestión de bases de datos y `optimización` de consultas para análisis y consolidación de datos en Excel.
+- **Monitor at National Learning Service [03/2024] - [08/2024]**:
+        - Database management and query `optimization` for data analysis and consolidation in Excel.
 
-    - Automatización y desarrollo de `formularios`.
+        - Automation and `form` development.
 
-    - Creación de piezas visuales de apoyo para informes y presentaciones
+        - Creation of visual support pieces for reports and presentations.
 
-## Educación y Certificaciones
+## Education and Certifications
 
-| Año       | Título / Certificación                                            | Institución    |
+| Year      | Title / Certification                                             | Institution    |
 |-----------|-------------------------------------------------------------------|----------------|
-| 2024–2026 | Tecnólogo en Análisis y Desarrollo de Software                    | SENA           |
-| 2024      | Administrador de Base de Datos Relacionales                       | Fundación C.S  |
-| 2024      | Análisis Exploratorio de Datos con Python                         | SENA           |
-| 2024      | Construcción de Base de Datos con MySQL                           | SENA           |
+| 2024–2026 | Technologist in Software Analysis and Development                 | SENA           |
+| 2024      | Relational Database Administrator                                 | C.S Foundation |
+| 2024      | Exploratory Data Analysis with Python                             | SENA           |
+| 2024      | Database Construction with MySQL                                  | SENA           |
 
-| Nivel         | Competencia Laboral                                                                           | Institución    |
-|---------------|-----------------------------------------------------------------------------------------------|----------------|
-| Intermedio    | Sistematizar Datos Masivos de Acuerdo con Métodos de Analítica y Herramientas Tecnológicas    | IBM y SENA     |
+| Level         | Labor Competency                                                                          | Institution  |
+|---------------|-------------------------------------------------------------------------------------------|--------------|
+| Intermediate  | Systematize Massive Data According to Analytics Methods and Technological Tools           | IBM and SENA |
 
-## Habilidades
+## Skills
 
-| Categoría              | Tecnologías                                                           |
+| Category               | Technologies                                                          |
 |------------------------|-----------------------------------------------------------------------|
 | Backend                | Python, Django REST Framework, MongoEngine                            |
 | Data Analysis          | Pandas, NumPy, Matplotlib, Seaborn, Plotly                            |
 | Machine Learning       | scikit-learn, PyTorch                                                 |
-| Data Bases             | PostgreSQL, MongoDB, MySQL                                            |
+| Databases              | PostgreSQL, MongoDB, MySQL                                            |
 | Frontend               | JavaScript, React, HTML5, CSS3, Tailwind, Chart.js                    |
 | Testing                | PyTest, Selenium, Playwright                                          |
 | DevOps / Tools         | Docker, Git                                                           |
 | Data Visualization / BI| Excel, Power BI                                                       |
-| Otros                  | C#, .NET Framework, Bash, PHP                                         |
+| Others                 | C#, .NET Framework, Bash, PHP                                         |
 
-### Habilidades blandas:
+### Soft Skills:
 
-> - Liderazgo 
-> - Adaptabilidad 
-> - Proactividad 
-> - Pensamiento estratégico 
-> - Trabajo en equipo 
-> - Toma de decisiones
+> - Leadership
+> - Adaptability
+> - Proactivity
+> - Strategic thinking
+> - Teamwork
+> - Decision making
 
-## Proyectos
+## Projects
 
-- [SenaSoft/chdv-sentiment-analysis (IA)](https://huggingface.co/SenaSoft/chdv-sentiment-analysis)
-- [SenaSoft/chdv-summarization-lora (IA)](https://huggingface.co/SenaSoft/chdv-sentiment-analysis)
-- Expertos Inventario: *Repositorio privado*
-- TaskMan (Bot): *Repositorio privado*
-- [Wissen (Observador Estudiantil)](https://obwissen.cloud/)
+- [SenaSoft/chdv-sentiment-analysis (AI)](https://huggingface.co/SenaSoft/chdv-sentiment-analysis)
+- [SenaSoft/chdv-summarization (AI)](https://huggingface.co/SenaSoft/chdv-summarization)
+- Expertos Inventory: *Private Repository*
+- TaskMan (Bot): *Private Repository*
+- [Wissen (Student Observer)](https://obwissen.cloud/)
 
-## Logros y Reconocimientos:
-- Ganador en la competencia nacional en la categoría de Inteligencia Artificial (jurado: IBM).
+## Achievements and Recognition
+- Winner in the national competition in the Artificial Intelligence category (judge: IBM).
 
-    Entrenamiento de modelos de clasificación multivariada, análisis de emociones y generación de resúmenes; reconocido por ser el único participante en realizar pruebas reales del sistema.
+        Training of multivariate classification models, emotion analysis, and summary generation; recognized for being the only participant to perform real system testing.
 
-## Idiomas
+## Languages
 
-- Inglés Intermedio (B1 - B2 level, 60%)
-- Alemán Básico (A1, 9%)
-- Español Nativo
+- English Intermediate (B1 - B2 level, 70%)
+- German Basic (A1, 9%)
+- Spanish Native
+
