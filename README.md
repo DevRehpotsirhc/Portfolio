@@ -66,11 +66,12 @@ Desarrollador de software `fullstack` y científico de datos con más de 2 años
 | Backend                | Python, Django REST Framework, MongoEngine                            |
 | Data Analysis          | Pandas, NumPy, Matplotlib, Seaborn, Plotly                            |
 | Machine Learning       | scikit-learn, PyTorch                                                 |
+| Data Bases             | PostgreSQL, MongoDB, MySQL                                            |
 | Frontend               | JavaScript, React, HTML5, CSS3, Tailwind, Chart.js                    |
-| Testing                | PyTest, Selenium                                                      |
+| Testing                | PyTest, Selenium, Playwright                                          |
 | DevOps / Tools         | Docker, Git                                                           |
 | Data Visualization / BI| Excel, Power BI                                                       |
-| Otros                  | C#, .NET Framework, PHP                                               |
+| Otros                  | C#, .NET Framework, Bash, PHP                                         |
 
 ### Habilidades blandas:
 
