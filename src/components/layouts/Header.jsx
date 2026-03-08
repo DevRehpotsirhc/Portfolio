@@ -40,6 +40,21 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
         return () => window.removeEventListener("resize", handleResize)
     }, [])
 
+    useEffect(() => {
+        const openTimer = setTimeout(() => {
+            setToggle(true)
+        }, 800);
+
+        const closeTimer = setTimeout(() => {
+            setToggle(false)
+        }, 1800);
+
+        return () => {
+            clearTimeout(openTimer);
+            clearTimeout(closeTimer);
+        };
+    }, []);
+
     const links = [
         { name: "About", href: about !== "" ? about : "#", showClass: "min-[420px]:block", hideClass: "min-[420px]:hidden" },
         { name: "Experience", href: experience !== "" ? experience : "#", showClass: "min-[520px]:block", hideClass: "min-[520px]:hidden" },
