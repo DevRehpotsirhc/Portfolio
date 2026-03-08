@@ -3,7 +3,7 @@ import { Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default {
-    title: "Components/Toggle",
+    title: "UI/Toggle",
     component: Toggle,
     parameters: {
         layout: "fullscreen",

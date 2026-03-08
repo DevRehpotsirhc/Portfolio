@@ -2,7 +2,7 @@ import { Button } from "../components/ui/Button";
 import { Moon } from "lucide-react";
 
 export default {
-    title: "Components/Button",
+    title: "UI/Button",
     component: Button,
     parameters: {
         layout: "fullscreen",
