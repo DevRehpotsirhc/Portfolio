@@ -1,10 +1,10 @@
 import { Cog, Menu, X, ArrowDownToLine, Moon, Sun, Linkedin, Github } from "lucide-react"
 import { useDarkmodeContext } from "../../context/DarkmodeContext"
 import { useClickOutside } from "../../hooks/useClickOutside"
-import cv from "../../assets/CV - Christopher Aponte.pdf"
 import { useState, useEffect, useRef } from "react"
 import { Button } from "../ui/Button"
 import { Toggle } from "../ui/Toggle"
+import { useDownloadCV } from "../../hooks/useDownloadCV"
 
 
 
@@ -62,14 +62,7 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
         { name: "Projects", href: projects !== "" ? projects : "#", showClass: "min-[720px]:block", hideClass: "min-[720px]:hidden" },
     ]
 
-    const handleDownloadCV = () => {
-        const link = document.createElement('a');
-        link.href = cv;
-        link.download = 'Christopher_Aponte_CV.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
+    const handleDownloadCV = useDownloadCV()
 
     return (
         <main className="flex h-23">
@@ -130,7 +123,7 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
                                         <Github className="text-slate-100" />
                                     </a>
                                     <a
-                                        href="https://wa.me/573194749249?text=Hola%20vengo%20desde%20tu%20portafolio,%20me%20interesar%C3%ADa%20hablar%20contigo"
+                                        href="https://wa.me/573194749249?text=Hi%20I%20come%20from%20your%20portfolio,%20I%20would%20be%20interested%20in%20talking%20to%20you"
                                         target="_blank"
                                         title="WhatsApp"
                                         className="flex items-center justify-center size-9.5 rounded-lg p-1 bg-lime-600 cursor-pointer border border-b-4 border-lime-900 shadow-md hover:shadow-lime-800 dark:hover:shadow-lime-500 transition-all duration-300"
