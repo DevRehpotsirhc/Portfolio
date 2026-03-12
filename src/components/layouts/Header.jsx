@@ -8,7 +8,7 @@ import { useDownloadCV } from "../../hooks/useDownloadCV"
 
 
 
-export const Header = ({ about = "", experience = "", skills = "", projects = "" }) => {
+export const Header = ({ about = "", experience = "", skills = "", projects = "", className = "", showHeader = false }) => {
     const [open, setOpen] = useState(false)
     const [toggle, setToggle] = useState(false);
     const [darkMode, setDarkMode] = useDarkmodeContext();
@@ -41,19 +41,24 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
     }, [])
 
     useEffect(() => {
+        if (!showHeader) {
+            setToggle(false)
+            return
+        }
+
         const openTimer = setTimeout(() => {
             setToggle(true)
-        }, 800);
+        }, 800)
 
         const closeTimer = setTimeout(() => {
             setToggle(false)
-        }, 1800);
+        }, 1800)
 
         return () => {
-            clearTimeout(openTimer);
-            clearTimeout(closeTimer);
-        };
-    }, []);
+            clearTimeout(openTimer)
+            clearTimeout(closeTimer)
+        }
+    }, [showHeader])
 
     const links = [
         { name: "About", href: about !== "" ? about : "#", showClass: "min-[420px]:block", hideClass: "min-[420px]:hidden" },
@@ -65,12 +70,13 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
     const handleDownloadCV = useDownloadCV()
 
     return (
-        <main className="flex h-23">
+        <main className="flex">
             <div className="fixed left-1/2 -translate-x-1/2 top-2 w-[85%] max-w-300 z-20 dark:text-slate-400 text-slate-600 font-semibold max-[720px]:text-sm min-[1000px]:text-base transform-gpu transform-3d">
                 <header
-                    className="flex items-center justify-between sm:justify-between align-middle
-                p-2 px-4 sm:px-5 h-[25dvh] max-h-17 top-2 rounded-xl bg-background-light backdrop-blur-md isolate shadow-lg shadow-medium-500/50 border border-b-9 rounded-b-2xl border-slate-300
-                dark:bg-background-dark dark:border-dark/60 dark:shadow-secundary-500/30"
+                    className={`flex items-center justify-between sm:justify-between align-middle
+                    p-2 px-4 sm:px-5 h-[25dvh] max-h-17 top-2 rounded-xl bg-background-light backdrop-blur-md isolate shadow-lg shadow-medium-500/50 border border-b-9 rounded-b-2xl border-slate-300
+                    dark:bg-background-dark dark:border-dark/60 dark:shadow-secundary-500/30
+                    ${className}`}
                 >
                     <section
                         ref={sectionRef}
