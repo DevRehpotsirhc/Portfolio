@@ -1,11 +1,22 @@
 import { Contact } from "./Contact"
 import { ChevronDown } from "lucide-react"
 
-export const Welcome = ({ urlBefore = "#" }) => {
+export const Welcome = ({ urlBefore = "#", contactRef }) => {
     return (
         <>
             <main className="block size-full h-dvh w-dvw">
                 <section className="absolute text-dark dark:text-white inset-0 flex items-center p-5 justify-center size-full h-dvh w-dvw overflow-y-auto">
+                    {/* Background */}
+                    <div className="background">
+                        <span className="ball"></span>
+                        <span className="ball"></span>
+                        <span className="ball"></span>
+                        <span className="ball"></span>
+                        <span className="ball"></span>
+                        <span className="ball"></span>
+                        <span className="ball"></span>
+                        <span className="ball"></span>
+                    </div>
                     <div className="flex max-[700px]:flex-col space-y-5 max-w-250 gap-3 items-center justify-center">
                         {/* Image */}
                         <div className="flex w-full min-[1000px]:w-[50%] items-center justify-center">
@@ -16,19 +27,28 @@ export const Welcome = ({ urlBefore = "#" }) => {
                                 <path className="fill-medium-500 dark:fill-secundary-500 translate-x-47 -translate-y-10" d="M3292 587.681C3303.9 587.654 3322.4 587.185 3331.9 595.258C3362.39 622.456 3392.05 652.63 3420.22 682.369C3476.15 741.405 3537.12 798.921 3590.8 859.861C3592.69 870.214 3594.51 878.36 3590.99 888.491C3581.51 915.819 3563.02 944.367 3548.2 969.397L3449.27 1136.86C3438.31 1155.58 3392.77 1225.08 3399.98 1245.11C3412.97 1281.16 3446.55 1356.3 3478.71 1378.91C3491.1 1387.61 3554.86 1390.22 3573.96 1391.45L3764.31 1403.7C3792.53 1405.57 3893.8 1404.28 3901.02 1436.41C3927.46 1554.01 3958.29 1674.53 3979.25 1793.12C3974.38 1805.96 3972.18 1809.98 3965.39 1821.66C3938.98 1836.92 3902.99 1854.3 3875.49 1868.18L3723.38 1944.84C3686.44 1963.53 3607.84 1991.8 3605.85 2036.08C3604.03 2076.66 3598.54 2122.2 3598.01 2162.68C3597.58 2195.3 3664.94 2238.11 3689.3 2256.04L3836.92 2364.93C3861.54 2383.22 3886.9 2401.08 3910.28 2421.08C3939.3 2445.89 3932.85 2465.79 3921.16 2497.48C3884.03 2598.05 3848.42 2700.23 3807.94 2799.44C3796.87 2807.08 3790.88 2809.64 3778.7 2815.28L3719.64 2808.75C3614.84 2801.31 3508.55 2780.29 3403.48 2778.66C3397.68 2778.57 3385.71 2783.99 3380.07 2786.46C3347.35 2770.56 3298.58 2740.37 3265.3 2721.14L3046.68 2595.07C3058.19 2577.15 3069.28 2558.96 3079.94 2540.53C3220.35 2294.6 3257.97 2003.17 3184.6 1729.64C3108.33 1446.19 2924.36 1219.78 2671.6 1074.06L2926.74 769.643C2934.55 771.581 2946.82 774.76 2954.44 771.455C2988.7 756.59 3026.57 734.727 3059.16 716.822L3292 587.681Z" />
                             </svg>
                         </div>
-
                         {/* Content */}
                         <div className="flex flex-col w-full gap-3">
                             <h1 className="text-xl min-[400px]:text-3xl min-[500px]:text-5xl font-semibold tracking-widest">Someone Else Anyone Nobody</h1>
                             <p className="text-sm min-[400px]:text-base">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti, maiores quas quam voluptate sunt eos aut labore consequuntur id doloribus. At quod quos illo pariatur doloribus ducimus et esse odit.
                             </p>
-                            <article className="flex max-[400px]:flex-col max-[400px]:max-w-42 max-[400px]:m-auto gap-2">
+                            <article ref={contactRef} className="flex max-[400px]:flex-col max-[400px]:max-w-42 max-[400px]:m-auto gap-2">
                                 <Contact />
                             </article>
                         </div>
                     </div>
-                    <a href={urlBefore} className="absolute group/arrow bottom-10 flex h-fit w-full items-center justify-center cursor-pointer">
+                    {/* Arrow */}
+                    <a
+                        href={urlBefore}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            document.querySelector(urlBefore)?.scrollIntoView({
+                                behavior: "smooth"
+                            })
+                        }}
+                        className="absolute group/arrow bottom-10 flex h-fit w-full items-center justify-center cursor-pointer"
+                    >
                         <span className="block h-px w-full group-hover/arrow:bg-dark dark:group-hover/arrow:bg-slate-700 bg-slate-400 dark:bg-dark transition-all duration-300"></span>
                         <ChevronDown className="w-20 mx-3 border border-transparent group-hover/arrow:border-dark dark:group-hover/arrow:border-slate-700 rounded transition-all duration-300" />
                         <span className="block h-px w-full group-hover/arrow:bg-dark dark:group-hover/arrow:bg-slate-700 bg-slate-400 dark:bg-dark transition-all duration-300"></span>
