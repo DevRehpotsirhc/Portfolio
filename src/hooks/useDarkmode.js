@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export const useDarkmode = () => {
     const getInitialTheme = () => {
-        const saved = localStorage.getItem("theme");
+        const saved = sessionStorage.getItem("theme");
         if (saved) return saved === "dark";
         return window.matchMedia("(prefers-color-scheme: dark)").matches;
     };
@@ -14,17 +14,17 @@ export const useDarkmode = () => {
         const media = window.matchMedia("(prefers-color-scheme: dark)");
 
         const handleSystemChange = (e) => {
-            if (!localStorage.getItem("theme")) {
+            if (!sessionStorage.getItem("theme")) {
                 setIsDark(e.matches);
             }
         };
 
         if (isDark) {
             root.classList.add("dark");
-            localStorage.setItem("theme", "dark");
+            sessionStorage.setItem("theme", "dark");
         } else {
             root.classList.remove("dark");
-            localStorage.setItem("theme", "light");
+            sessionStorage.setItem("theme", "light");
         }
 
         media.addEventListener("change", handleSystemChange);

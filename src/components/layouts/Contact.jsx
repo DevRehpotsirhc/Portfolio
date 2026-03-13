@@ -17,13 +17,13 @@ export const Contact = () => {
                 inside={
                     <span className="flex gap-1 items-center">
                         <ArrowDownToLine className="size-5 min-[980px]:size-6" />
-                        <p className="text-sm text-nowrap">Download CV</p>
+                        <p className="text-xs text-nowrap">Download CV</p>
                     </span>
                 }
                 insideStyle="h-10 w-full! max-w-50"
                 onClick={handleDownloadCV}
             />
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 min-[400px]:gap-2">
                 <a
                     href="mailto:christopher4ponte@gmail.com"
                     target="_blank"
