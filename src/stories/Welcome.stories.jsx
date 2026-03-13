@@ -40,13 +40,13 @@ export const Content = () => {
     }, [])
 
     return (
-        <div className="sticky min-h-dvh size-full bg-background-light dark:bg-background-dark">
-            <Header showHeader={showHeader} className={`${showHeader ? "animacion-apertura" : "-translate-y-25 transform transition-all duration-300"}`} />
+        <div className="sticky min-h-dvh size-full bg-background-light dark:bg-background-dark overflow-hidden">
+            <Header showHeader={showHeader} className={`${showHeader ? "animation-open" : "-translate-y-25 transform transition-all duration-300"}`} />
 
-            <Welcome contactRef={contactRef} urlBefore="#redirect" />
+            <Welcome contactRef={contactRef} />
 
             <h1 id="redirect">Redirect</h1>
-            <p>
+            <p className="text-black dark:text-white">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur asperiores ad a, sed suscipit, alias iure dolorem rerum odio eum incidunt doloremque non aliquid omnis nobis in harum, magnam facere.
                 Explicabo odit quas hic! Dolorem vitae rem facilis quam doloremque. Nemo perferendis fugit harum ad earum quia qui pariatur similique. Eum perspiciatis culpa veniam voluptates asperiores eos accusamus illum incidunt.
             </p>

@@ -125,7 +125,7 @@
   box-shadow: 40vmin 0 5.196265905749415vmin currentColor;
 }
 
-@keyframes abrirCentro {
+@keyframes openCenter {
   0% {
     transform: scaleX(0);
     opacity: 0;
@@ -136,9 +136,9 @@
   }
 }
 
-.animacion-apertura {
+.animation-open {
   /* Aplicamos la animación */
-  animation: abrirCentro 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: openCenter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   /* Crucial: que el crecimiento nazca desde el centro */
   transform-origin: center;
 }

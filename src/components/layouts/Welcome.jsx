@@ -1,7 +1,7 @@
 import { Contact } from "./Contact"
 import { ChevronDown } from "lucide-react"
 
-export const Welcome = ({ urlBefore = "#", contactRef }) => {
+export const Welcome = ({ contactRef }) => {
     return (
         <>
             <main className="block size-full h-dvh w-dvw">
@@ -29,7 +29,7 @@ export const Welcome = ({ urlBefore = "#", contactRef }) => {
                         </div>
                         {/* Content */}
                         <div className="flex flex-col w-full gap-3">
-                            <h1 className="text-xl min-[400px]:text-3xl min-[500px]:text-5xl font-semibold tracking-widest">Someone Else Anyone Nobody</h1>
+                            <h1 className="text-xl min-[400px]:text-3xl min-[500px]:text-5xl font-semibold tracking-widest max-w-60 min-[400px]:max-w-70 sm:max-w-150">Christopher José Aponte Ovalles</h1>
                             <p className="text-sm min-[400px]:text-base">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti, maiores quas quam voluptate sunt eos aut labore consequuntur id doloribus. At quod quos illo pariatur doloribus ducimus et esse odit.
                             </p>
@@ -38,21 +38,6 @@ export const Welcome = ({ urlBefore = "#", contactRef }) => {
                             </article>
                         </div>
                     </div>
-                    {/* Arrow */}
-                    <a
-                        href={urlBefore}
-                        onClick={(e) => {
-                            e.preventDefault()
-                            document.querySelector(urlBefore)?.scrollIntoView({
-                                behavior: "smooth"
-                            })
-                        }}
-                        className="absolute group/arrow bottom-10 flex h-fit w-full items-center justify-center cursor-pointer"
-                    >
-                        <span className="block h-px w-full group-hover/arrow:bg-dark dark:group-hover/arrow:bg-slate-700 bg-slate-400 dark:bg-dark transition-all duration-300"></span>
-                        <ChevronDown className="w-20 mx-3 border border-transparent group-hover/arrow:border-dark dark:group-hover/arrow:border-slate-700 rounded transition-all duration-300" />
-                        <span className="block h-px w-full group-hover/arrow:bg-dark dark:group-hover/arrow:bg-slate-700 bg-slate-400 dark:bg-dark transition-all duration-300"></span>
-                    </a>
                 </section>
             </main>
         </>
