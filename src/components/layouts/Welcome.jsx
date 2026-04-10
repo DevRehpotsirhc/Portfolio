@@ -1,11 +1,11 @@
 import { Contact } from "./Contact"
-import { ChevronDown } from "lucide-react"
+import { ChevronsDown } from "lucide-react"
 
-export const Welcome = ({ contactRef }) => {
+export const Welcome = ({ contactRef, redirectUrl }) => {
     return (
         <>
-            <main className="block size-full h-[85dvh] w-dvw">
-                <section className="absolute text-dark dark:text-white inset-0 flex items-start min-[700px]:items-center justify-center p-2 min-[320px]:p-5 min-[400px]:pt-12 min-[700px]:p-12 size-full h-[85dvh] w-dvw overflow-y-auto">
+            <main id="about" className="block size-full h-dvh w-dvw">
+                <section className="absolute text-dark dark:text-white inset-0 flex items-start min-[700px]:items-center justify-center p-2 min-[320px]:p-5 min-[400px]:pt-12 min-[700px]:p-12 size-full h-dvh w-dvw overflow-y-auto">
                     {/* Background */}
                     <div className="background">
                         <span className="ball"></span>
@@ -29,7 +29,7 @@ export const Welcome = ({ contactRef }) => {
                         </div>
                         {/* Content */}
                         <div className="flex flex-col w-full gap-3">
-                            <h1 className="text-2xl min-[300px]:text-3xl min-[500px]:text-5xl font-semibold tracking-widest">Christopher Aponte</h1>
+                            <h1 className="text-2xl min-[300px]:text-3xl min-[500px]:text-5xl font-semibold tracking-widest"><span translate="no">Christopher Aponte</span></h1>
                             <p className="text-sm min-[400px]:text-base">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti, maiores quas quam voluptate sunt eos aut labore consequuntur id doloribus. At quod quos illo pariatur doloribus ducimus et esse odit.
                             </p>
@@ -38,6 +38,18 @@ export const Welcome = ({ contactRef }) => {
                             </article>
                         </div>
                     </div>
+                    {/* Swipper */}
+                    <a
+                        href={redirectUrl}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            document.querySelector(redirectUrl)?.scrollIntoView({
+                                behavior: "smooth"
+                            })
+                        }}
+                        className="absolute bottom-0 flex items-center justify-center bg-transparent size-full h-[10dvh] w-dvw cursor-pointer px-2">
+                        <span className="flex flex-col items-center size-fit px-2">Scroll for more<ChevronsDown className="size-7" /></span>
+                    </a>
                 </section>
             </main>
         </>

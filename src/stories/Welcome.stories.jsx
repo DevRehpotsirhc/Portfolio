@@ -41,9 +41,9 @@ export const Content = () => {
 
     return (
         <div className="sticky min-h-dvh size-full bg-background-light dark:bg-background-dark overflow-hidden">
-            <Header showHeader={showHeader} className={`${showHeader ? "animation-open" : "-translate-y-25 transform transition-all duration-300"}`} />
+            <Header about="#about" showHeader={showHeader} className={`${showHeader ? "animation-open" : "-translate-y-25 transform transition-all duration-300"}`} />
 
-            <Welcome contactRef={contactRef} />
+            <Welcome redirectUrl={"#redirect"} contactRef={contactRef} />
 
             <h1 id="redirect">Redirect</h1>
             <p className="text-black dark:text-white">

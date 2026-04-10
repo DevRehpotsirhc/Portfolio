@@ -71,7 +71,7 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
 
     return (
         <main className="flex">
-            <div className="fixed left-1/2 -translate-x-1/2 top-2 w-[85%] max-w-300 z-20 dark:text-slate-400 text-slate-600 font-semibold max-[720px]:text-sm min-[1000px]:text-base transform-gpu transform-3d">
+            <div className="fixed left-1/2 -translate-x-1/2 top-[calc(env(safe-area-inset-top)+0.5rem)] w-[85%] max-w-300 z-20 dark:text-slate-400 text-slate-600 font-semibold max-[720px]:text-sm min-[1000px]:text-base transform-gpu transform-3d">
                 <header
                     className={`flex items-center justify-between sm:justify-between align-middle
                     p-2 px-4 sm:px-5 h-[25dvh] max-h-17 top-2 rounded-xl bg-background-light backdrop-blur-md isolate shadow-lg shadow-medium-500/50 border border-b-9 rounded-b-2xl border-slate-300
@@ -86,7 +86,7 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
                         onMouseLeave={() => setToggle(false)}
                     >
                         <Cog className={`size-6 group-hover:rotate-180 ${toggle ? "rotate-180" : ""} transition-all transform duration-500`} />
-                        <span>Christopher Aponte</span>
+                        <span translate="no">Christopher Aponte</span>
 
                         <article className={`absolute top-full -left-7 max-[640px]:-left-6 w-fit opacity-0 -translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out ${toggle ? "opacity-100 translate-y-0 pointer-events-auto" : "pointer-events-none"}`}
                         >
@@ -147,6 +147,12 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
                             <a
                                 key={link.name}
                                 href={link.href}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    document.querySelector(link.href)?.scrollIntoView({
+                                        behavior: "smooth"
+                                    })
+                                }}
                                 className={`hidden ${link.showClass} group relative`}
                             >
                                 {link.name}
@@ -188,6 +194,12 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
                             <a
                                 key={link.name}
                                 href={link.href}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    document.querySelector(link.href)?.scrollIntoView({
+                                        behavior: "smooth"
+                                    })
+                                }}
                                 className={`${link.hideClass} group relative w-full text-center`}
                             >
                                 {link.name}
