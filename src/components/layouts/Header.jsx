@@ -43,6 +43,7 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
     useEffect(() => {
         if (!showHeader) {
             setToggle(false)
+            setOpen(false)
             return
         }
 

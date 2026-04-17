@@ -23,14 +23,25 @@ export const useDarkmode = () => {
     }, [isDark]);
 
     useEffect(() => {
+        const media = window.matchMedia("(prefers-color-scheme: dark)");
+
         const handleSystemChange = (e) => {
-            if (!sessionStorage.getItem("theme")) {
-                setIsDark(e.matches);
-            }
+            setIsDark(e.matches);
         };
 
-        media.addEventListener("change", handleSystemChange);
-        return () => media.removeEventListener("change", handleSystemChange);
+        if (media.addEventListener) {
+            media.addEventListener("change", handleSystemChange);
+        } else {
+            media.addListener(handleSystemChange);
+        }
+
+        return () => {
+            if (media.removeEventListener) {
+                media.removeEventListener("change", handleSystemChange);
+            } else {
+                media.removeListener(handleSystemChange);
+            }
+        };
     }, []);
 
     const setTheme = (value) => {

@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const Toggle = ({ value = false, onChange, activeStyle = "", inactiveStyle = "", squareStyle = "", activeIcon = null, inactiveIcon = null, title = "" }) => {
     const [isOn, setIsOn] = useState(value);
+
+    useEffect(() => {
+        setIsOn(value);
+    }, [value]);
 
     const toggleStatus = () => {
         const newValue = !isOn;

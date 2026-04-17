@@ -29,7 +29,7 @@ export const Welcome = ({ contactRef, redirectUrl }) => {
                         </div>
                         {/* Content */}
                         <div className="flex flex-col w-full gap-3">
-                            <h1 className="text-2xl min-[300px]:text-3xl min-[500px]:text-5xl font-semibold tracking-widest"><span translate="no">Christopher Aponte</span></h1>
+                            <h1 className="text-2xl min-[300px]:text-3xl min-[500px]:text-5xl font-semibold tracking-widest"><span translate="no">Lorem Consequuntur</span></h1>
                             <p className="text-sm min-[400px]:text-base">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti, maiores quas quam voluptate sunt eos aut labore consequuntur id doloribus. At quod quos illo pariatur doloribus ducimus et esse odit.
                             </p>
