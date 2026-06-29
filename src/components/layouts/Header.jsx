@@ -1,4 +1,4 @@
-import { Cog, Menu, X, ArrowDownToLine, Moon, Sun, Linkedin, Github } from "lucide-react"
+import { Cog, Menu, X, ArrowDownToLine, Moon, Sun, Linkedin, Github, Mail } from "lucide-react"
 import { useDarkmodeContext } from "../../context/DarkmodeContext"
 import { useClickOutside } from "../../hooks/useClickOutside"
 import { useState, useEffect, useRef } from "react"
@@ -91,20 +91,20 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
 
                         <article className={`absolute top-full -left-7 max-[640px]:-left-6 w-fit opacity-0 -translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out ${toggle ? "opacity-100 translate-y-0 pointer-events-auto" : "pointer-events-none"}`}
                         >
-                            <div className="flex flex-col w-60 max-[300px]:pr-0 max-[300px]:w-[85dvw] mt-9 max-h-[70dvh] overflow-y-auto p-2 pt-0 gap-2">
-                                <Button
-                                    style={darkMode ? "secundary" : "medium"}
-                                    title="Download CV"
-                                    others="w-full! m-0! p-0!"
-                                    inside={
-                                        <span className="flex gap-1 items-center">
-                                            <ArrowDownToLine className="size-5 min-[980px]:size-6" />
-                                            <p>Download CV</p>
-                                        </span>
-                                    }
-                                    onClick={handleDownloadCV}
-                                />
+                            <div className="flex flex-col w-70 max-[300px]:pr-0 max-[300px]:w-[85dvw] mt-9 max-h-[70dvh] overflow-y-auto p-2 pt-0 gap-2">
                                 <div className="flex flex-wrap items-center gap-2 m-auto">
+                                    <Button
+                                        style={darkMode ? "secundary" : "medium"}
+                                        title="Download CV"
+                                        others="w-full! m-0! p-0!"
+                                        inside={
+                                            <span className="flex gap-1 items-center">
+                                                <ArrowDownToLine className="size-5 min-[980px]:size-6" />
+                                                <p>Download CV</p>
+                                            </span>
+                                        }
+                                        onClick={handleDownloadCV}
+                                    />
                                     <Toggle
                                         inactiveStyle="bg-dark!"
                                         activeIcon={<Sun className="text-amber-300 stroke-[2.8px]" />}
@@ -113,6 +113,14 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
                                         onChange={setDarkMode}
                                         title="Darkmode"
                                     />
+                                    <a
+                                        href="mailto:christopher4ponte@gmail.com"
+                                        target="_blank"
+                                        title="Email"
+                                        className="flex items-center justify-center size-9.5 rounded-lg p-1 bg-complementary-400 cursor-pointer border border-b-4 border-complementary-600 shadow-md hover:shadow-complementary-700 dark:hover:shadow-complementary-300 transition-all duration-300"
+                                    >
+                                        <Mail className="text-slate-100" />
+                                    </a>
                                     <a
                                         href="https://www.linkedin.com/in/christopher-aponte/"
                                         target="_blank"
