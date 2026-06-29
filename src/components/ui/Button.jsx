@@ -1,7 +1,7 @@
 export const Button = ({ style = "", type = "button", disabled = false, onClick = null, inside = "", byside = "", insideStyle = "", bysideStyle = "", others = "", title = "" }) => {
     const variantStyles = {
         primary: "border-primary-700 bg-primary-600 text-primary-50 group-hover/btn:shadow-primary-500/90 dark:bg-primary-600 dark:text-primary-50 dark:border-primary-700 dark:group-hover/btn:shadow-primary-500/90",
-        secundary: "border-secundary-600 bg-secundary-500 text-secundary-900 group-hover/btn:shadow-secundary-500/90 dark:bg-secundary-600! dark:text-black dark:border-secundary-700 dark:group-hover/btn:shadow-secundary-500/90",
+        secundary: "border-secundary-600 bg-secundary-500 text-secundary-900 group-hover/btn:shadow-secundary-500/90 dark:bg-secundary-600! dark:text-white dark:border-secundary-700 dark:group-hover/btn:shadow-secundary-500/90",
         medium: "border-medium-500 bg-medium-400 text-medium-50 group-hover/btn:shadow-medium-500/90 dark:bg-medium-500! dark:text-white dark:border-medium-600 dark:group-hover/btn:shadow-medium-500/90",
         complementary: "border-complementary-600 bg-complementary-500 text-complementary-900 group-hover/btn:shadow-complementary-500/90! dark:bg-complementary-600! dark:text-black dark:border-complementary-700 dark:group-hover/btn:shadow-complementary-500/80",
         danger: "border-danger-600 bg-danger-500 text-white group-hover/btn:shadow-danger-500/90! dark:border-danger-700 dark:group-hover/btn:shadow-danger-500/90 bg-danger-200 dark:bg-danger-600 dark:text-danger-50",
