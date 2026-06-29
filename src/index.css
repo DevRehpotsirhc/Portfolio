@@ -35,8 +35,8 @@
 .background {
   position: absolute;
   z-index: -10;
-  width: 100dvw;
-  height: 100dvh;
+  width: 100svw;
+  height: 100svh;
   top: 0;
   left: 0;
   overflow: hidden;
