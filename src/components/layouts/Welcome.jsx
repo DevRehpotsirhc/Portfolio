@@ -1,5 +1,6 @@
 import { Contact } from "./Contact"
 import { ChevronsDown } from "lucide-react"
+import { Tag } from "../ui/Tag"
 
 export const Welcome = ({ contactRef, redirectUrl }) => {
     return (
@@ -31,8 +32,13 @@ export const Welcome = ({ contactRef, redirectUrl }) => {
                         <div className="flex flex-col w-full gap-3">
                             <h1 className="text-2xl min-[300px]:text-3xl min-[500px]:text-5xl font-semibold tracking-widest"><span translate="no">Christopher Aponte</span></h1>
                             <p className="text-sm min-[400px]:text-base">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti, maiores quas quam voluptate sunt eos aut labore consequuntur id doloribus. At quod quos illo pariatur doloribus ducimus et esse odit.
+                                Fullstack software developer and data scientist with over 2 years of experience in automations, financial data analysis, AI training, and backend and frontend development.
                             </p>
+                            <ul className="mt-1 flex flex-wrap gap-2 self-start">
+                                <Tag>Proactive</Tag>
+                                <Tag>Adaptable</Tag>
+                                <Tag>Results-oriented</Tag>
+                            </ul>
                             <article ref={contactRef} className="flex max-[320px]:flex-col max-[400px]:max-w-42 max-[320px]:m-auto gap-1 min-[400px]:gap-2">
                                 <Contact />
                             </article>

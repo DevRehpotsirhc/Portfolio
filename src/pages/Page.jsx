@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Welcome } from "../components/layouts/Welcome";
 import { Header } from "../components/layouts/Header"
 import { Footer } from "../components/layouts/Footer"
+import { ExperienceTimeline } from "../components/layouts/ExperienceTimeline"
 
 
 export const Page = () => {
@@ -23,16 +24,15 @@ export const Page = () => {
 
     return (
         <>
-            <Header about="#about" showHeader={showHeader} className={`${showHeader ? "animation-open" : "-translate-y-25 transform transition-all duration-300"}`} />
+            <Header
+                about="#about"
+                experience="#experience"
+                showHeader={showHeader}
+                className={`${showHeader ? "animation-open" : "-translate-y-25 transform transition-all duration-300"}`}
+            />
 
-            <Welcome redirectUrl={"#redirect"} contactRef={contactRef} />
-
-            <h1 id="redirect">Redirect</h1>
-            <p className="text-black dark:text-white">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur asperiores ad a, sed suscipit, alias iure dolorem rerum odio eum incidunt doloremque non aliquid omnis nobis in harum, magnam facere.
-                Explicabo odit quas hic! Dolorem vitae rem facilis quam doloremque. Nemo perferendis fugit harum ad earum quia qui pariatur similique. Eum perspiciatis culpa veniam voluptates asperiores eos accusamus illum incidunt.
-            </p>
-            <div className="block h-dvh w-full"></div>
+            <Welcome redirectUrl={"#experience"} contactRef={contactRef} />
+            <ExperienceTimeline />
             <Footer />
         </>
     )

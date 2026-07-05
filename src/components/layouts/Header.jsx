@@ -91,7 +91,7 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
 
                         <article className={`absolute top-full -left-7 max-[640px]:-left-6 w-fit opacity-0 -translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out ${toggle ? "opacity-100 translate-y-0 pointer-events-auto" : "pointer-events-none"}`}
                         >
-                            <div className="flex flex-col w-70 max-[300px]:pr-0 max-[300px]:w-[85dvw] mt-9 max-h-[70dvh] overflow-y-auto p-2 pt-0 gap-2">
+                            <div className="flex flex-col w-50 max-[300px]:pr-0 max-[300px]:w-[85dvw] mt-9 max-h-[70dvh] overflow-y-auto p-2 pt-0 gap-2">
                                 <div className="flex flex-wrap items-center gap-2 m-auto">
                                     <Button
                                         style={darkMode ? "secundary" : "medium"}
@@ -104,14 +104,6 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
                                             </span>
                                         }
                                         onClick={handleDownloadCV}
-                                    />
-                                    <Toggle
-                                        inactiveStyle="bg-dark!"
-                                        activeIcon={<Sun className="text-amber-300 stroke-[2.8px]" />}
-                                        inactiveIcon={<Moon className="text-slate-200 stroke-[2.8px]" />}
-                                        value={darkMode}
-                                        onChange={setDarkMode}
-                                        title="Darkmode"
                                     />
                                     <a
                                         href="mailto:christopher4ponte@gmail.com"
@@ -152,6 +144,15 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
                         </article>
                     </section>
                     <aside className="flex items-center space-x-4">
+                        <Toggle
+                            inactiveStyle="bg-dark!"
+                            activeIcon={<Sun className="text-amber-300 stroke-[2.8px]" />}
+                            inactiveIcon={<Moon className="text-slate-200 stroke-[2.8px]" />}
+                            value={darkMode}
+                            onChange={setDarkMode}
+                            title="Darkmode"
+                        />
+
                         {links.map((link) => (
                             <a
                                 key={link.name}
