@@ -1,18 +1,25 @@
 import { Tag } from "../ui/Tag"
 
 const timelineData = {
-    2: {
+    3: {
         company: "Expertos Consulting",
         years: "2024 - 2026",
         position: "Fullstack developer",
-        desc: "Built internal tools for purchasing workflows, reporting, and process automation.",
-        technologies: ["Python", "JavaScript", "Linux", "Docker"]
+        desc: "Web applications, financial dashboards, workflow automations, mass reporting tools, and software testing were developed in a collaborative team environment.",
+        technologies: ["Python", "Django Rest Framework", "JavaScript", "React", "Linux", "Docker", "GitHub"]
+    },
+    2: {
+        company: "IBM",
+        years: "2025",
+        position: "National AI Competition",
+        desc: "Winner of IBM's national AI model training competition, achieving the highest score in the category. Recognized as the only participant to validate the solution through real-world software testing.",
+        technologies: ["PyTorch", "Jupyter Notebook", "Docker", "sklearn", "Google Colab"]
     },
     1: {
         company: "SENA",
         years: "2024",
         position: "Monitor",
-        desc: "Created automations for repetitive forms and helped accelerate database-related processes.",
+        desc: "Office automations were developed, database processes were optimized, and dashboard components for administrative tasks were created.",
         technologies: ["Visual Basic", "Excel", "C#"]
     }
 }
@@ -56,7 +63,7 @@ export const ExperienceTimeline = ({ data = timelineData }) => {
                                 <div className="rounded-xl border border-slate-300/80 bg-white/80 p-4 shadow-md shadow-slate-300/40 backdrop-blur-sm dark:border-dark/60 dark:bg-dark/30 dark:shadow-secundary-900/30">
                                     <div className="mb-2 flex flex-wrap items-center gap-2">
                                         <span className="rounded-md bg-medium-100 px-2 py-1 text-xs font-semibold text-medium-700 dark:bg-secundary-900 dark:text-secundary-200">{item.years}</span>
-                                        <h3 className="text-lg font-semibold text-dark dark:text-white">{item.company}</h3>
+                                        <h3 className="text-lg font-semibold text-dark dark:text-white" translate="no">{item.company}</h3>
                                     </div>
 
                                     <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{item.position}</p>
@@ -64,7 +71,7 @@ export const ExperienceTimeline = ({ data = timelineData }) => {
 
                                     <ul className="mt-4 flex flex-wrap gap-2">
                                         {(item.technologies || []).map((tech) => (
-                                            <Tag key={`${item.company}-${tech}`}>{tech}</Tag>
+                                            <Tag key={`${item.company}-${tech}`}><span translate="no">{tech}</span></Tag>
                                         ))}
                                     </ul>
                                 </div>

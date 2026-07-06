@@ -17,9 +17,9 @@ export const Contact = () => {
                 others="w-full! m-0! p-0! max-w-50"
                 inside={
                     <span className="flex gap-1 items-center">
-                        <ArrowDownToLine className="size-5 min-[980px]:size-6 max-[406px]:stroke-3" />
-                        <p className="text-xs font-semibold text-nowrap max-[406px]:hidden">Download CV</p>
-                        <p className="text-xs font-semibold text-nowrap min-[406px]:hidden">CV</p>
+                        <ArrowDownToLine className="size-5 min-[980px]:size-6 max-[308px]:stroke-3" />
+                        <p className="text-xs font-semibold text-nowrap max-[308px]:hidden">Download CV</p>
+                        <p className="text-xs font-semibold text-nowrap min-[308px]:hidden">CV</p>
                     </span>
                 }
                 insideStyle="h-10 w-full! max-w-50"
