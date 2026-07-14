@@ -68,7 +68,7 @@ export const Welcome = ({ contactRef, redirectUrl }) => {
                                 behavior: "smooth"
                             })
                         }}
-                        className="absolute bottom-0 flex items-center justify-center bg-transparent size-full h-[10svh] w-full cursor-pointer px-2">
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 flex h-[10svh] w-fit items-center justify-center bg-transparent cursor-pointer px-2">
                         <span className="flex flex-col items-center size-fit px-2">More<ChevronsDown className="size-7" /></span>
                     </a>
                 </section>
