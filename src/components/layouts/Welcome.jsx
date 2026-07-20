@@ -47,7 +47,7 @@ export const Welcome = ({ contactRef, redirectUrl }) => {
                         <div className="flex flex-col w-full min-[700px]:flex-1 min-w-0 gap-3">
                             <h1 className="text-2xl min-[300px]:text-3xl min-[500px]:text-5xl font-semibold tracking-widest"><span translate="no">Christopher Aponte</span></h1>
                             <p className="text-sm min-[400px]:text-base">
-                                Fullstack software developer and data scientist with over 2 years of experience in automations, financial data analysis, AI training, and backend and frontend development.
+                                Fullstack software developer and data scientist with over 2 years of experience in automations, financial data analysis, machine learning AI model training, and backend and frontend development.
                             </p>
                             <ul className="flex flex-wrap gap-1 self-start">
                                 <Tag>Proactive</Tag>
