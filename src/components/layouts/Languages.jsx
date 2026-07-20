@@ -48,7 +48,7 @@ export const Languages = () => {
                                 </div>
                                 <div className="h-2 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
                                     <div
-                                        className="h-full rounded-full bg-linear-to-r from-medium-500 via-primary-500 to-complementary-500 transition-all duration-300"
+                                        className="h-full rounded-full bg-medium-500 dark:bg-secundary-500 transition-all duration-300"
                                         style={{ width: `${percentage}%` }}
                                     />
                                 </div>
