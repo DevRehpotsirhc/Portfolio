@@ -89,8 +89,10 @@ export const CompaniesMarquee = ({ data = companiesMarqueeData }) => {
 
     return (
         <section aria-label="Companies" className="relative my-2 w-full overflow-hidden py-2">
-            <span className="pointer-events-none absolute inset-x-0 top-0.75 h-1 bg-medium-500/70 dark:bg-secundary-300/70" />
-            <span className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-medium-500/70 dark:bg-secundary-300/70" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 flex flex-col gap-[2px]">
+                <span className="h-[2px] bg-medium-500/70 dark:bg-secundary-300/70" />
+                <span className="h-[4px] bg-medium-500/70 dark:bg-secundary-300/70" />
+            </div>
 
             <div className="overflow-hidden">
                 <div className="company-marquee-track flex w-max items-center">
@@ -106,8 +108,10 @@ export const CompaniesMarquee = ({ data = companiesMarqueeData }) => {
                 </div>
             </div>
 
-            <span className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 bg-medium-500/70 dark:bg-secundary-300/70" />
-            <span className="pointer-events-none absolute inset-x-0 bottom-0.78 h-1 bg-medium-500/70 dark:bg-secundary-300/70" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col-reverse gap-[2px]">
+                <span className="h-[2px] bg-medium-500/70 dark:bg-secundary-300/70" />
+                <span className="h-[4px] bg-medium-500/70 dark:bg-secundary-300/70" />
+            </div>
         </section>
     )
 }
