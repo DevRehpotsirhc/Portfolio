@@ -34,7 +34,7 @@ const technicalCatalog = {
         tech("Pandas", "pandas", "#DDD6FE", "#5B21B6"),
         tech("NumPy", "numpy", "#BAE6FD", "#0369A1"),
         tech("Matplotlib", "matplotlib", "#D9F99D", "#4D7C0F"),
-        tech("Seaborn", "python", "#BFDBFE", "#1E40AF"),
+        tech("Seaborn", "seaborn", "#BFDBFE", "#1E40AF"),
         tech("Plotly", "plotly", "#C7D2FE", "#4338CA"),
         tech("Jupyter Notebook", "jupyter", "#FDBA74", "#C2410C"),
         tech("Google Colab", "googlecolab", "#FDE68A", "#A16207")

@@ -89,9 +89,9 @@ export const CompaniesMarquee = ({ data = companiesMarqueeData }) => {
 
     return (
         <section aria-label="Companies" className="relative my-2 w-full overflow-hidden py-2">
-            <div className="pointer-events-none absolute inset-x-0 top-0 flex flex-col gap-[2px]">
-                <span className="h-[2px] bg-medium-500/70 dark:bg-secundary-300/70" />
-                <span className="h-[4px] bg-medium-500/70 dark:bg-secundary-300/70" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 flex flex-col gap-0.5">
+                <span className="h-px bg-medium-500/70 dark:bg-secundary-300/70" />
+                <span className="h-px bg-medium-500/70 dark:bg-secundary-300/70" />
             </div>
 
             <div className="overflow-hidden">
@@ -108,9 +108,9 @@ export const CompaniesMarquee = ({ data = companiesMarqueeData }) => {
                 </div>
             </div>
 
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col-reverse gap-[2px]">
-                <span className="h-[2px] bg-medium-500/70 dark:bg-secundary-300/70" />
-                <span className="h-[4px] bg-medium-500/70 dark:bg-secundary-300/70" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col-reverse gap-0.5">
+                <span className="h-px bg-medium-500/70 dark:bg-secundary-300/70" />
+                <span className="h-px bg-medium-500/70 dark:bg-secundary-300/70" />
             </div>
         </section>
     )
