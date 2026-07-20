@@ -142,3 +142,20 @@
   /* Crucial: que el crecimiento nazca desde el centro */
   transform-origin: center;
 }
+
+@keyframes companiesMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.company-marquee-track {
+  animation: companiesMarquee 360s linear infinite;
+}
+
+.company-marquee-set {
+  flex-shrink: 0;
+}
