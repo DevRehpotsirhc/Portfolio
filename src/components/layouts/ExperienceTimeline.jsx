@@ -40,7 +40,6 @@ const normalizeTimeline = (data) => {
 
 export const ExperienceTimeline = ({ data = timelineData }) => {
     const experiences = normalizeTimeline(data)
-    const companies = [...new Set(experiences.map((item) => item.company).filter(Boolean))]
 
     return (
         <section id="experience" className="relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-8">
@@ -79,17 +78,6 @@ export const ExperienceTimeline = ({ data = timelineData }) => {
                         </article>
                     )
                 })}
-            </div>
-
-            <div className="mt-10">
-                <h3 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-600 dark:text-slate-300">Companies</h3>
-                <div className="flex gap-3 overflow-x-auto pb-2">
-                    {companies.map((company) => (
-                        <div key={company} className="min-w-max rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm dark:border-dark/60 dark:bg-dark/40 dark:text-slate-200">
-                            {company}
-                        </div>
-                    ))}
-                </div>
             </div>
         </section>
     )
