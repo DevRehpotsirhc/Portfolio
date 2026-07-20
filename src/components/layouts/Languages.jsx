@@ -4,7 +4,7 @@ import { Card } from "../ui/Card"
 const languagesData = [
     {
         language: "English",
-        proficiency: 0.69,
+        proficiency: 0.71,
         level: "B2"
     },
     {
