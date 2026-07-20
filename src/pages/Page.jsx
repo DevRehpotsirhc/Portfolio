@@ -3,6 +3,8 @@ import { Welcome } from "../components/layouts/Welcome";
 import { Header } from "../components/layouts/Header"
 import { Footer } from "../components/layouts/Footer"
 import { ExperienceTimeline } from "../components/layouts/ExperienceTimeline"
+import { CompaniesMarquee } from "../components/layouts/CompaniesMarquee"
+import { Skills } from "../components/layouts/Skills"
 
 
 export const Page = () => {
@@ -27,12 +29,15 @@ export const Page = () => {
             <Header
                 about="#about"
                 experience="#experience"
+                skills="#skills"
                 showHeader={showHeader}
                 className={`${showHeader ? "animation-open" : "-translate-y-25 transform transition-all duration-300"}`}
             />
 
             <Welcome redirectUrl={"#experience"} contactRef={contactRef} />
             <ExperienceTimeline />
+            <CompaniesMarquee />
+            <Skills />
             <Footer />
         </>
     )
