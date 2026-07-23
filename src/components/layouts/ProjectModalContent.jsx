@@ -31,8 +31,6 @@ export const ProjectModalContent = ({ project }) => {
     const [showPrivateAlert, setShowPrivateAlert] = useState(false)
     const [previewData, setPreviewData] = useState(null)
     const [isPreviewVisible, setIsPreviewVisible] = useState(false)
-    const activePointerIdRef = useRef(null)
-    const activePointerTypeRef = useRef(null)
     const closePreviewTimeoutRef = useRef(null)
     const openPreviewRafRef = useRef(null)
 
@@ -54,13 +52,34 @@ export const ProjectModalContent = ({ project }) => {
         openPreviewRafRef.current = null
     }
 
-    const closeMaximizedImage = () => {
-        if (activePointerIdRef.current === null && !previewData) {
+    const getElementRect = (element) => {
+        const sourceRect = element.getBoundingClientRect()
+        return {
+            top: sourceRect.top,
+            left: sourceRect.left,
+            width: sourceRect.width,
+            height: sourceRect.height
+        }
+    }
+
+    const closeMaximizedImage = (nextOriginRect = null) => {
+        if (!previewData) {
             return
         }
 
-        activePointerIdRef.current = null
-        activePointerTypeRef.current = null
+        if (nextOriginRect) {
+            setPreviewData((prev) => {
+                if (!prev) {
+                    return prev
+                }
+
+                return {
+                    ...prev,
+                    originRect: nextOriginRect
+                }
+            })
+        }
+
         setIsPreviewVisible(false)
         clearOpenPreviewRaf()
         clearClosePreviewTimeout()
@@ -71,32 +90,24 @@ export const ProjectModalContent = ({ project }) => {
         }, PREVIEW_CLOSE_ANIMATION_MS)
     }
 
-    const openWhilePressing = (image, event) => {
-        if (event.pointerType === "mouse" && event.button !== 0) {
+    const openPreview = (image, event, sourceKey) => {
+        if (event.type === "click" && event.detail === 0) {
             return
         }
 
-        activePointerIdRef.current = event.pointerId
-        activePointerTypeRef.current = event.pointerType || null
         const sourceElement = event.currentTarget
-        const sourceRect = sourceElement.getBoundingClientRect()
+        const sourceRect = getElementRect(sourceElement)
         const aspectRatio = sourceElement.naturalWidth && sourceElement.naturalHeight
             ? sourceElement.naturalWidth / sourceElement.naturalHeight
             : sourceRect.width / sourceRect.height
-
-        const originRect = {
-            top: sourceRect.top,
-            left: sourceRect.left,
-            width: sourceRect.width,
-            height: sourceRect.height
-        }
 
         clearClosePreviewTimeout()
         clearOpenPreviewRaf()
 
         setPreviewData({
             image,
-            originRect,
+            sourceKey,
+            originRect: sourceRect,
             targetRect: getCenteredPreviewRect(aspectRatio)
         })
         setIsPreviewVisible(false)
@@ -105,50 +116,17 @@ export const ProjectModalContent = ({ project }) => {
             setIsPreviewVisible(true)
             openPreviewRafRef.current = null
         })
-
-        if (event.currentTarget.setPointerCapture) {
-            event.currentTarget.setPointerCapture(event.pointerId)
-        }
     }
 
-    useEffect(() => {
-        const closeIfActive = (event) => {
-            if (activePointerIdRef.current === null) {
-                return
-            }
+    const togglePreview = (image, index, event) => {
+        const sourceKey = `${project.id}-collection-${index}`
 
-            if (event.pointerId !== undefined && event.pointerId !== activePointerIdRef.current) {
-                return
-            }
-
-            closeMaximizedImage()
-        }
-
-        const closeOnBlurWhenMouse = () => {
-            if (activePointerTypeRef.current !== "mouse") {
-                return
-            }
-
-            closeMaximizedImage()
-        }
-
-        window.addEventListener("pointerup", closeIfActive)
-        window.addEventListener("pointercancel", closeIfActive)
-        window.addEventListener("blur", closeOnBlurWhenMouse)
-
-        return () => {
-            window.removeEventListener("pointerup", closeIfActive)
-            window.removeEventListener("pointercancel", closeIfActive)
-            window.removeEventListener("blur", closeOnBlurWhenMouse)
-        }
-    }, [previewData])
-
-    const closeOnPointerLeave = (event) => {
-        if (event.pointerType !== "mouse") {
+        if (previewData?.sourceKey === sourceKey) {
+            closeMaximizedImage(getElementRect(event.currentTarget))
             return
         }
 
-        closeMaximizedImage()
+        openPreview(image, event, sourceKey)
     }
 
     useEffect(() => {
@@ -250,10 +228,7 @@ export const ProjectModalContent = ({ project }) => {
                                         src={image}
                                         alt={`${project.name} collection ${index + 1}`}
                                         loading="lazy"
-                                        onPointerDown={(event) => openWhilePressing(image, event)}
-                                        onPointerUp={closeMaximizedImage}
-                                        onPointerLeave={closeOnPointerLeave}
-                                        onPointerCancel={closeMaximizedImage}
+                                        onClick={(event) => togglePreview(image, index, event)}
                                         onContextMenu={(event) => event.preventDefault()}
                                         className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
                                     />
@@ -309,11 +284,16 @@ export const ProjectModalContent = ({ project }) => {
                     role="dialog"
                     aria-modal="true"
                     aria-label="Expanded project image"
-                    className={`pointer-events-none fixed inset-0 z-110 backdrop-blur-sm transition-all duration-200 ease-in-out ${
+                    onClick={() => closeMaximizedImage()}
+                    className={`fixed inset-0 z-110 backdrop-blur-sm transition-all duration-200 ease-in-out ${
                         isPreviewVisible ? "bg-black/85 opacity-100" : "bg-black/0 opacity-0"
                     }`}
                 >
                     <figure
+                        onClick={(event) => {
+                            event.stopPropagation()
+                            closeMaximizedImage()
+                        }}
                         className="fixed overflow-hidden rounded-2xl border border-white/20 bg-slate-900 shadow-2xl shadow-black/40 transition-all ease-in-out"
                         style={{
                             top: `${isPreviewVisible ? previewData.targetRect.top : previewData.originRect.top}px`,
