@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react"
 import { X } from "lucide-react"
 import { useClickOutside } from "../../hooks/useClickOutside"
 
-const overlayBaseStyles = "fixed inset-0 z-100 flex items-center justify-center bg-slate-950/70 p-3 sm:p-6"
+const overlayBaseStyles = "fixed inset-0 z-100 flex items-center justify-center bg-slate-950/70 p-3 sm:p-6 backdrop-blur-sm"
 const panelBaseStyles = "max-h-[88svh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-slate-300 bg-background-light px-4 pb-4 pt-0 shadow-2xl dark:border-slate-700 dark:bg-background-dark sm:px-6 sm:pb-6 sm:pt-0"
 const headerBaseStyles = "sticky top-0 z-20 -mx-4 mb-5 flex items-start justify-between gap-4 border-b border-slate-300/80 bg-background-light/95 px-4 py-3 backdrop-blur-sm dark:border-slate-700 dark:bg-background-dark/95 sm:-mx-6 sm:px-6 sm:py-4"
 

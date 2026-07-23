@@ -72,7 +72,7 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
 
     return (
         <main className="flex">
-            <div className="fixed left-1/2 -translate-x-1/2 top-[calc(env(safe-area-inset-top)+0.5rem)] w-[85%] max-w-300 z-20 dark:text-slate-400 text-slate-600 font-semibold max-[720px]:text-sm min-[1000px]:text-base transform-gpu transform-3d">
+            <div className="fixed left-1/2 -translate-x-1/2 top-[calc(env(safe-area-inset-top)+0.5rem)] w-[85%] max-w-7xl z-20 dark:text-slate-400 text-slate-600 font-semibold max-[720px]:text-sm min-[1000px]:text-base transform-gpu transform-3d">
                 <header
                     className={`flex items-center justify-between sm:justify-between align-middle
                     p-2 px-4 sm:px-5 h-[25dvh] max-h-17 top-2 rounded-xl bg-background-light backdrop-blur-md isolate shadow-lg shadow-medium-500/50 border border-b-9 rounded-b-2xl border-slate-300
