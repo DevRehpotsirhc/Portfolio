@@ -43,6 +43,7 @@ export const Projects = () => {
     const selected = projectEntries[projectIndex]
     const currentSlideIndex = slideByProject[selected.id] ?? 0
     const currentSlide = selected.slides[currentSlideIndex]
+    const isModalOpen = Boolean(selectedProject)
 
     const progressText = useMemo(() => {
         return `${projectIndex + 1} / ${projectEntries.length}`
@@ -94,7 +95,7 @@ export const Projects = () => {
     }, [])
 
     useEffect(() => {
-        if (isAutoSlidePaused || !isSectionVisible || !isWindowFocused || selectedProject) {
+        if (isAutoSlidePaused || !isSectionVisible || !isWindowFocused || isModalOpen) {
             return undefined
         }
 
@@ -109,7 +110,7 @@ export const Projects = () => {
         return () => {
             window.clearTimeout(timeout)
         }
-    }, [currentSlideIndex, isAutoSlidePaused, isSectionVisible, isWindowFocused, manualDelayBoost, selected.id, selected.slideDurationSeconds, selected.slides.length, selectedProject])
+    }, [currentSlideIndex, isAutoSlidePaused, isSectionVisible, isWindowFocused, isModalOpen, manualDelayBoost, selected.id, selected.slideDurationSeconds, selected.slides.length])
 
     const focusProjectsSection = () => {
         const projectsSection = document.getElementById("headerContent")
@@ -184,6 +185,16 @@ export const Projects = () => {
         goToSlide(selected.id, selected.slides.length, direction)
     }
 
+    const openProjectDetails = () => {
+        setIsAutoSlidePaused(true)
+        setSelectedProject(selected)
+    }
+
+    const closeProjectDetails = () => {
+        setSelectedProject(null)
+        setIsAutoSlidePaused(false)
+    }
+
     return (
         <section ref={sectionRef} id="projects" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-8">
             <div id="headerContent" className="mb-8 mt-14 flex flex-col gap-2">
@@ -201,7 +212,7 @@ export const Projects = () => {
                     <article
                         role="button"
                         tabIndex={0}
-                        onClick={() => setSelectedProject(selected)}
+                        onClick={openProjectDetails}
                         onMouseEnter={() => setIsAutoSlidePaused(true)}
                         onMouseLeave={() => setIsAutoSlidePaused(false)}
                         onTouchStart={() => setIsAutoSlidePaused(true)}
@@ -210,7 +221,7 @@ export const Projects = () => {
                         onKeyDown={(event) => {
                             if (event.key === "Enter" || event.key === " ") {
                                 event.preventDefault()
-                                setSelectedProject(selected)
+                                openProjectDetails()
                             }
                         }}
                         className="group relative h-120 w-full overflow-hidden rounded-4xl bg-dark text-left cursor-pointer"
@@ -308,8 +319,8 @@ export const Projects = () => {
             </div>
 
             <Modal
-                isOpen={Boolean(selectedProject)}
-                onClose={() => setSelectedProject(null)}
+                isOpen={isModalOpen}
+                onClose={closeProjectDetails}
                 title={selectedProject?.name || "Project"}
                 subtitle={selectedProject?.category || ""}
                 ariaLabel="Project details"
