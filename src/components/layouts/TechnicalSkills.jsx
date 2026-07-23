@@ -42,7 +42,8 @@ const technicalCatalog = {
     "Machine Learning": [
         tech("Scikit-Learn", "scikitlearn", "#FED7AA", "#EA580C"),
         tech("PyTorch", "pytorch", "#FECACA", "#DC2626"),
-        tech("Transformers", "huggingface", "#FEF08A", "#CA8A04")
+        tech("Transformers", "huggingface", "#FEF08A", "#CA8A04"),
+        tech("MLFlow", "mlflow", "#E8F5E9", "#0097A7")
     ],
     Frontend: [
         tech("JavaScript", "javascript", "#FDE047", "#A16207"),
@@ -123,7 +124,7 @@ export const TechnicalSkills = () => {
                         onClick={() => setIsModalOpen(true)}
                         className="group flex min-h-25 items-center justify-center text-center transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
                     >
-                        <p className="text-base">Show All...</p>
+                        <p className="text-xl">Show All...</p>
                     </Card>
                 </div>
             </article>
