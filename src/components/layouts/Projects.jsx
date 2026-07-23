@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Modal } from "../ui/Modal"
 import { ArrowControlButton } from "../ui/ArrowControlButton"
 import { ProjectModalContent } from "./ProjectModalContent"
@@ -29,11 +29,16 @@ const projectEntries = Object.entries(projectsData).map(([name, config]) => ({
 }))
 
 export const Projects = () => {
+    const sectionRef = useRef(null)
     const [projectIndex, setProjectIndex] = useState(0)
     const [slideByProject, setSlideByProject] = useState({})
     const [selectedProject, setSelectedProject] = useState(null)
     const [manualDelayBoost, setManualDelayBoost] = useState(false)
     const [isAutoSlidePaused, setIsAutoSlidePaused] = useState(false)
+    const [isSectionVisible, setIsSectionVisible] = useState(false)
+    const [isWindowFocused, setIsWindowFocused] = useState(
+        typeof document !== "undefined" ? document.visibilityState === "visible" : true
+    )
 
     const selected = projectEntries[projectIndex]
     const currentSlideIndex = slideByProject[selected.id] ?? 0
@@ -44,7 +49,52 @@ export const Projects = () => {
     }, [projectIndex])
 
     useEffect(() => {
-        if (isAutoSlidePaused) {
+        const element = sectionRef.current
+        if (!element || typeof IntersectionObserver === "undefined") {
+            setIsSectionVisible(true)
+            return undefined
+        }
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsSectionVisible(entry.isIntersecting)
+            },
+            { threshold: 0.35 }
+        )
+
+        observer.observe(element)
+
+        return () => {
+            observer.disconnect()
+        }
+    }, [])
+
+    useEffect(() => {
+        const onFocus = () => {
+            setIsWindowFocused(true)
+        }
+
+        const onBlur = () => {
+            setIsWindowFocused(false)
+        }
+
+        const onVisibilityChange = () => {
+            setIsWindowFocused(document.visibilityState === "visible")
+        }
+
+        window.addEventListener("focus", onFocus)
+        window.addEventListener("blur", onBlur)
+        document.addEventListener("visibilitychange", onVisibilityChange)
+
+        return () => {
+            window.removeEventListener("focus", onFocus)
+            window.removeEventListener("blur", onBlur)
+            document.removeEventListener("visibilitychange", onVisibilityChange)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (isAutoSlidePaused || !isSectionVisible || !isWindowFocused || selectedProject) {
             return undefined
         }
 
@@ -59,7 +109,7 @@ export const Projects = () => {
         return () => {
             window.clearTimeout(timeout)
         }
-    }, [currentSlideIndex, isAutoSlidePaused, manualDelayBoost, selected.id, selected.slideDurationSeconds, selected.slides.length])
+    }, [currentSlideIndex, isAutoSlidePaused, isSectionVisible, isWindowFocused, manualDelayBoost, selected.id, selected.slideDurationSeconds, selected.slides.length, selectedProject])
 
     const focusProjectsSection = () => {
         const projectsSection = document.getElementById("headerContent")
@@ -135,7 +185,7 @@ export const Projects = () => {
     }
 
     return (
-        <section id="projects" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-8">
+        <section ref={sectionRef} id="projects" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-8">
             <div id="headerContent" className="mb-8 mt-14 flex flex-col gap-2">
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-medium-500 dark:text-secundary-300">Featured work</p>
                 <h2 className="text-2xl font-semibold text-dark dark:text-white sm:text-3xl">Projects</h2>
