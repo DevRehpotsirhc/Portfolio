@@ -120,10 +120,17 @@ export const Projects = () => {
     const goToProject = (direction) => {
         setManualDelayBoost(false)
         setProjectIndex((prev) => {
-            if (direction === "next") {
-                return (prev + 1) % projectEntries.length
-            }
-            return (prev - 1 + projectEntries.length) % projectEntries.length
+            const nextProjectIndex = direction === "next"
+                ? (prev + 1) % projectEntries.length
+                : (prev - 1 + projectEntries.length) % projectEntries.length
+
+            const nextProjectId = projectEntries[nextProjectIndex].id
+            setSlideByProject((currentSlides) => ({
+                ...currentSlides,
+                [nextProjectId]: 0
+            }))
+
+            return nextProjectIndex
         })
         focusProjectsSection()
     }
@@ -168,13 +175,26 @@ export const Projects = () => {
         })
 
         if (shouldAdvanceProject) {
+            const nextProjectIndex = (projectIndex + 1) % projectEntries.length
+            const nextProjectId = projectEntries[nextProjectIndex].id
+
+            setSlideByProject((prev) => ({
+                ...prev,
+                [nextProjectId]: 0
+            }))
+
             setManualDelayBoost(false)
-            setProjectIndex((prev) => (prev + 1) % projectEntries.length)
+            setProjectIndex(nextProjectIndex)
         }
     }
 
     const quickSelectProject = (index) => {
         setManualDelayBoost(false)
+        const targetProjectId = projectEntries[index].id
+        setSlideByProject((prev) => ({
+            ...prev,
+            [targetProjectId]: 0
+        }))
         setProjectIndex(index)
         focusProjectsSection()
     }
