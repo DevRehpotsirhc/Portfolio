@@ -5,6 +5,7 @@ import { Footer } from "../components/layouts/Footer"
 import { ExperienceTimeline } from "../components/layouts/ExperienceTimeline"
 import { CompaniesMarquee } from "../components/layouts/CompaniesMarquee"
 import { Skills } from "../components/layouts/Skills"
+import { Projects } from "../components/layouts/Projects"
 
 
 export const Page = () => {
@@ -30,6 +31,7 @@ export const Page = () => {
                 about="#about"
                 experience="#experience"
                 skills="#skills"
+                projects="#projects"
                 showHeader={showHeader}
                 className={`${showHeader ? "animation-open" : "-translate-y-25 transform transition-all duration-300"}`}
             />
@@ -38,6 +40,7 @@ export const Page = () => {
             <ExperienceTimeline />
             <CompaniesMarquee />
             <Skills />
+            <Projects />
             <Footer />
         </>
     )
