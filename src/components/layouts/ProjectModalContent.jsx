@@ -32,6 +32,7 @@ export const ProjectModalContent = ({ project }) => {
     const [previewData, setPreviewData] = useState(null)
     const [isPreviewVisible, setIsPreviewVisible] = useState(false)
     const activePointerIdRef = useRef(null)
+    const activePointerTypeRef = useRef(null)
     const closePreviewTimeoutRef = useRef(null)
     const openPreviewRafRef = useRef(null)
 
@@ -59,6 +60,7 @@ export const ProjectModalContent = ({ project }) => {
         }
 
         activePointerIdRef.current = null
+        activePointerTypeRef.current = null
         setIsPreviewVisible(false)
         clearOpenPreviewRaf()
         clearClosePreviewTimeout()
@@ -75,6 +77,7 @@ export const ProjectModalContent = ({ project }) => {
         }
 
         activePointerIdRef.current = event.pointerId
+        activePointerTypeRef.current = event.pointerType || null
         const sourceElement = event.currentTarget
         const sourceRect = sourceElement.getBoundingClientRect()
         const aspectRatio = sourceElement.naturalWidth && sourceElement.naturalHeight
@@ -121,16 +124,32 @@ export const ProjectModalContent = ({ project }) => {
             closeMaximizedImage()
         }
 
+        const closeOnBlurWhenMouse = () => {
+            if (activePointerTypeRef.current !== "mouse") {
+                return
+            }
+
+            closeMaximizedImage()
+        }
+
         window.addEventListener("pointerup", closeIfActive)
         window.addEventListener("pointercancel", closeIfActive)
-        window.addEventListener("blur", closeMaximizedImage)
+        window.addEventListener("blur", closeOnBlurWhenMouse)
 
         return () => {
             window.removeEventListener("pointerup", closeIfActive)
             window.removeEventListener("pointercancel", closeIfActive)
-            window.removeEventListener("blur", closeMaximizedImage)
+            window.removeEventListener("blur", closeOnBlurWhenMouse)
         }
     }, [previewData])
+
+    const closeOnPointerLeave = (event) => {
+        if (event.pointerType !== "mouse") {
+            return
+        }
+
+        closeMaximizedImage()
+    }
 
     useEffect(() => {
         if (!previewData) {
@@ -233,7 +252,7 @@ export const ProjectModalContent = ({ project }) => {
                                         loading="lazy"
                                         onPointerDown={(event) => openWhilePressing(image, event)}
                                         onPointerUp={closeMaximizedImage}
-                                        onPointerLeave={closeMaximizedImage}
+                                        onPointerLeave={closeOnPointerLeave}
                                         onPointerCancel={closeMaximizedImage}
                                         onContextMenu={(event) => event.preventDefault()}
                                         className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
