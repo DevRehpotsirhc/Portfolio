@@ -9,6 +9,7 @@ import taskManData from "../../assets/projects/TaskMan/TaskMan"
 import validadorCrcData from "../../assets/projects/Validador CRC/Validador CRC"
 
 const AUTO_SLIDE_SECONDS = 6
+const SWIPE_THRESHOLD_PX = 48
 
 const projectsData = {
     ...expertosInventarioData,
@@ -30,6 +31,9 @@ const projectEntries = Object.entries(projectsData).map(([name, config]) => ({
 
 export const Projects = () => {
     const sectionRef = useRef(null)
+    const touchStartRef = useRef({ x: 0, y: 0 })
+    const preventOpenOnClickRef = useRef(false)
+    const preventOpenTimeoutRef = useRef(null)
     const [projectIndex, setProjectIndex] = useState(0)
     const [slideByProject, setSlideByProject] = useState({})
     const [selectedProject, setSelectedProject] = useState(null)
@@ -92,6 +96,26 @@ export const Projects = () => {
             window.removeEventListener("blur", onBlur)
             document.removeEventListener("visibilitychange", onVisibilityChange)
         }
+    }, [])
+
+    useEffect(() => {
+        return () => {
+            if (preventOpenTimeoutRef.current) {
+                window.clearTimeout(preventOpenTimeoutRef.current)
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        // Preload all slide images so text and image transitions stay in sync.
+        const uniqueImages = new Set(
+            projectEntries.flatMap((project) => project.slides.map((slide) => slide.image))
+        )
+
+        uniqueImages.forEach((imageSrc) => {
+            const img = new Image()
+            img.src = imageSrc
+        })
     }, [])
 
     useEffect(() => {
@@ -205,6 +229,55 @@ export const Projects = () => {
         goToSlide(selected.id, selected.slides.length, direction)
     }
 
+    const handleImageTouchStart = (event) => {
+        setIsAutoSlidePaused(true)
+
+        const touch = event.touches?.[0]
+        if (!touch) {
+            return
+        }
+
+        touchStartRef.current = {
+            x: touch.clientX,
+            y: touch.clientY
+        }
+    }
+
+    const handleImageTouchEnd = (event) => {
+        setIsAutoSlidePaused(false)
+
+        const touch = event.changedTouches?.[0]
+        if (!touch) {
+            return
+        }
+
+        const deltaX = touch.clientX - touchStartRef.current.x
+        const deltaY = touch.clientY - touchStartRef.current.y
+        const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY)
+        const passedThreshold = Math.abs(deltaX) >= SWIPE_THRESHOLD_PX
+
+        if (!isHorizontalSwipe || !passedThreshold) {
+            return
+        }
+
+        preventOpenOnClickRef.current = true
+        if (preventOpenTimeoutRef.current) {
+            window.clearTimeout(preventOpenTimeoutRef.current)
+        }
+
+        preventOpenTimeoutRef.current = window.setTimeout(() => {
+            preventOpenOnClickRef.current = false
+            preventOpenTimeoutRef.current = null
+        }, 300)
+
+        setManualDelayBoost(true)
+        goToSlide(selected.id, selected.slides.length, deltaX < 0 ? "next" : "prev")
+    }
+
+    const handleImageTouchCancel = () => {
+        setIsAutoSlidePaused(false)
+    }
+
     const openProjectDetails = () => {
         setIsAutoSlidePaused(true)
         setSelectedProject(selected)
@@ -232,12 +305,17 @@ export const Projects = () => {
                     <article
                         role="button"
                         tabIndex={0}
-                        onClick={openProjectDetails}
+                        onClick={() => {
+                            if (preventOpenOnClickRef.current) {
+                                return
+                            }
+                            openProjectDetails()
+                        }}
                         onMouseEnter={() => setIsAutoSlidePaused(true)}
                         onMouseLeave={() => setIsAutoSlidePaused(false)}
-                        onTouchStart={() => setIsAutoSlidePaused(true)}
-                        onTouchEnd={() => setIsAutoSlidePaused(false)}
-                        onTouchCancel={() => setIsAutoSlidePaused(false)}
+                        onTouchStart={handleImageTouchStart}
+                        onTouchEnd={handleImageTouchEnd}
+                        onTouchCancel={handleImageTouchCancel}
                         onKeyDown={(event) => {
                             if (event.key === "Enter" || event.key === " ") {
                                 event.preventDefault()
@@ -250,7 +328,8 @@ export const Projects = () => {
                             src={currentSlide.image}
                             alt={`${selected.name} slide ${currentSlideIndex + 1}`}
                             className="absolute inset-0 h-full w-full object-cover opacity-85 transition-transform duration-500 group-hover:scale-[1.03]"
-                            loading="lazy"
+                            loading="eager"
+                            fetchPriority="high"
                         />
 
                         <div className="absolute inset-0 bg-linear-to-b from-medium-950/85 via-medium-950/30 to-medium-950/20 dark:from-dark/85 dark:via-dark/30 dark:to-dark/20" />
@@ -287,9 +366,10 @@ export const Projects = () => {
                         </div>
                     </article>
 
-                    <aside className="flex h-fit max-h-88 self-start flex-col gap-2 overflow-y-auto rounded-2xl border border-medium-300 bg-background-light/70 p-2 dark:border-dark/70 dark:bg-background-dark/65 md:max-h-120">
-                        <p className="px-1 pt-1 text-xs font-semibold uppercase tracking-[0.2em] text-medium-600 dark:text-secundary-300">More projects</p>
-                        {projectEntries.map((project, index) => {
+                    <aside className="flex max-h-88 self-start flex-col overflow-hidden rounded-2xl border border-medium-300 bg-background-light/70 dark:border-dark/70 dark:bg-background-dark/65 md:max-h-120">
+                        <p className="z-20 border-b border-medium-300/70 bg-background-light/95 px-3 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-medium-600 backdrop-blur-sm dark:border-dark/70 dark:bg-background-dark/95 dark:text-secundary-300">More projects</p>
+                        <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto p-2">
+                            {projectEntries.map((project, index) => {
                             const slideIndex = slideByProject[project.id] ?? 0
                             const slide = project.slides[slideIndex]
                             const isActive = index === projectIndex
@@ -314,6 +394,7 @@ export const Projects = () => {
                                 </button>
                             )
                         })}
+                        </div>
                     </aside>
                 </div>
 
