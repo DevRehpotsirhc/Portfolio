@@ -2,7 +2,6 @@ import TaskMan from "./TaskMan.jpeg"
 import TaskMan2 from "./TaskMan2.png"
 import TaskMan3 from "./TaskMan3.png"
 import TaskMan4 from "./TaskMan4.png"
-import TaskMan5 from "./TaskMan5.jpeg"
 
 const projectsData = {
     "TaskMan - Bot": {
@@ -27,15 +26,13 @@ const projectsData = {
             TaskMan,
             TaskMan2,
             TaskMan3,
-            TaskMan4,
-            TaskMan5
+            TaskMan4
         ],
         slides: {
             [TaskMan]: "Main bot workspace showing run history and overall network check health.",
             [TaskMan2]: "Connected-device detail view with key diagnostics for faster troubleshooting.",
             [TaskMan3]: "Port and latency consolidation to spot bottlenecks and unstable links.",
-            [TaskMan4]: "Monitoring panel for event tracking and incident prioritization.",
-            [TaskMan5]: "Printer status report gathered by scraping to flag unavailable devices."
+            [TaskMan4]: "Monitoring panel for event tracking and incident prioritization."
         }
     }
 }

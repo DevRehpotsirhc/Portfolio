@@ -244,7 +244,7 @@ export const Projects = () => {
                                 openProjectDetails()
                             }
                         }}
-                        className="group relative h-120 w-full overflow-hidden rounded-4xl bg-dark text-left cursor-pointer"
+                        className="group relative h-120 w-full overflow-hidden rounded-4xl bg-medium-500 dark:bg-dark text-left cursor-pointer"
                     >
                         <img
                             src={currentSlide.image}
@@ -253,7 +253,7 @@ export const Projects = () => {
                             loading="lazy"
                         />
 
-                        <div className="absolute inset-0 bg-linear-to-b from-dark/85 via-dark/30 to-dark/90" />
+                        <div className="absolute inset-0 bg-linear-to-b from-medium-950/85 via-medium-950/30 to-medium-950/20 dark:from-dark/85 dark:via-dark/30 dark:to-dark/20" />
 
                         <div className="absolute bottom-5 right-5 z-20 flex items-center gap-2">
                             <ArrowControlButton
@@ -272,7 +272,7 @@ export const Projects = () => {
 
                         <div className="relative flex h-full flex-col justify-between p-6 text-slate-100">
                             <div className="space-y-2">
-                                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secundary-200">{selected.category}</p>
+                                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-medium-300 dark:text-secundary-200">{selected.category}</p>
                                 <h3 className="text-2xl font-semibold leading-tight sm:text-4xl">{selected.name}</h3>
                                 <p className="max-w-xl text-sm text-slate-200 sm:text-base">{currentSlide.description}</p>
                             </div>
