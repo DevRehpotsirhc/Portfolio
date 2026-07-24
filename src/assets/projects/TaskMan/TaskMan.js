@@ -6,7 +6,7 @@ import TaskMan4 from "./TaskMan4.webp"
 const projectsData = {
     "TaskMan - Bot": {
         id: "taskman",
-        slideDurationSeconds: 5,
+        slideDurationSeconds: 7,
         category: "WAN Network Automation & Monitoring",
         longDescription:
             "TaskMan is an operations bot built to reduce response times across enterprise WAN infrastructure. It automates service health reporting, generates connected-device inventories, and consolidates critical diagnostics such as active ports, MAC address, IP, and latency. It also scrapes corporate printers to report real-time status and enable preventive action before incidents impact operations.",

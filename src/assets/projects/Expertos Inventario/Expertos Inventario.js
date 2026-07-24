@@ -9,7 +9,7 @@ import expinv7 from "./expinv7.webp"
 const projectsData = {
     "Expertos Inventario": {
         id: "expertos-inventario",
-        slideDurationSeconds: 5,
+        slideDurationSeconds: 7,
         category: "Inventory & Purchasing Management",
         longDescription:
             "Expertos Inventario is a complete platform for controlling stock, purchasing, and suppliers from a single dashboard. It centralizes product catalogs, categories, supplier relationships, and purchase orders while surfacing key metrics such as inventory levels, low-stock alerts, and total inventory value. Its visual approach enables faster and more precise restocking and purchasing decisions.",

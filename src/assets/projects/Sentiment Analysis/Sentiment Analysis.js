@@ -7,7 +7,7 @@ import sa5 from "./sa5.webp"
 const projectsData = {
     "Sentiment Analysis Model": {
         id: "sentiment-analysis",
-        slideDurationSeconds: 5,
+        slideDurationSeconds: 7,
         category: "Competitive NLP with Transformers + LoRA",
         longDescription:
             "Sentiment Analysis Model is a language model trained with Transformers and LoRA fine-tuning to deliver robust sentiment classification. This work was part of the model set that earned me first place in IBM's national competition. The repository is public on Hugging Face, showcasing both performance and full technical traceability.",
