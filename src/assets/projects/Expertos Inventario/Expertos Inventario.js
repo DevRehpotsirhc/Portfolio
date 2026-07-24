@@ -1,10 +1,10 @@
-import expinv from "./expinv.png"
-import expinv2 from "./expinv2.png"
-import expinv3 from "./expinv3.png"
-import expinv4 from "./expinv4.png"
-import expinv5 from "./expinv5.png"
-import expinv6 from "./expinv6.png"
-import expinv7 from "./expinv7.png"
+import expinv from "./expinv.webp"
+import expinv2 from "./expinv2.webp"
+import expinv3 from "./expinv3.webp"
+import expinv4 from "./expinv4.webp"
+import expinv5 from "./expinv5.webp"
+import expinv6 from "./expinv6.webp"
+import expinv7 from "./expinv7.webp"
 
 const projectsData = {
     "Expertos Inventario": {

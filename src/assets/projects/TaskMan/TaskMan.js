@@ -1,7 +1,7 @@
-import TaskMan from "./TaskMan.jpeg"
-import TaskMan2 from "./TaskMan2.png"
-import TaskMan3 from "./TaskMan3.png"
-import TaskMan4 from "./TaskMan4.png"
+import TaskMan from "./TaskMan.webp"
+import TaskMan2 from "./TaskMan2.webp"
+import TaskMan3 from "./TaskMan3.webp"
+import TaskMan4 from "./TaskMan4.webp"
 
 const projectsData = {
     "TaskMan - Bot": {

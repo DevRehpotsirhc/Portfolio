@@ -1,9 +1,9 @@
-import gestion from "./gestion.png"
-import gestion2 from "./gestion2.png"
-import gestion3 from "./gestion3.png"
-import gestion4 from "./gestion4.png"
-import gestion5 from "./gestion5.png"
-import gestion6 from "./gestion6.png"
+import gestion from "./gestion.webp"
+import gestion2 from "./gestion2.webp"
+import gestion3 from "./gestion3.webp"
+import gestion4 from "./gestion4.webp"
+import gestion5 from "./gestion5.webp"
+import gestion6 from "./gestion6.webp"
 
 const projectsData = {
     "Gestion": {

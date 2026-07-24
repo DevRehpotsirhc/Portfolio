@@ -1,6 +1,6 @@
-import valiCRC from "./valiCRC.png"
-import valiCRC2 from "./valiCRC2.jpeg"
-import valiCRC3 from "./valiCRC3.jpeg"
+import valiCRC from "./valiCRC.webp"
+import valiCRC2 from "./valiCRC2.webp"
+import valiCRC3 from "./valiCRC3.webp"
 
 const projectsData = {
     "Validador CRC": {

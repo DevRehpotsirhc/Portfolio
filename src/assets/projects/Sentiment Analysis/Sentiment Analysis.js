@@ -1,8 +1,8 @@
-import sa from "./sa.png"
-import sa2 from "./sa2.png"
-import sa3 from "./sa3.png"
-import sa4 from "./sa4.png"
-import sa5 from "./sa5.png"
+import sa from "./sa.webp"
+import sa2 from "./sa2.webp"
+import sa3 from "./sa3.webp"
+import sa4 from "./sa4.webp"
+import sa5 from "./sa5.webp"
 
 const projectsData = {
     "Sentiment Analysis Model": {
