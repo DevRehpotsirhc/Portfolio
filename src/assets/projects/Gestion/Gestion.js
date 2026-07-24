@@ -1,42 +1,36 @@
-import gestion from "./gestion.webp"
-import gestion2 from "./gestion2.webp"
 import gestion3 from "./gestion3.webp"
 import gestion4 from "./gestion4.webp"
 import gestion5 from "./gestion5.webp"
 import gestion6 from "./gestion6.webp"
 
 const projectsData = {
-    "Gestion": {
+    "Landing Page Website": {
         id: "gestion",
         slideDurationSeconds: 5,
-        category: "IT Infrastructure & Operations",
+        category: "WordPress Landing Page Management",
         longDescription:
-            "Gestion is not a single product, but a portfolio block that represents hands-on enterprise IT operations. It includes Active Directory administration, WordPress website management, and provisioning of services and virtual machines with VMware. This project highlights end-to-end capability across identity, web content, and virtual infrastructure.",
+            "Gestion represents the administration and continuous optimization of a corporate landing page built with WordPress and Elementor. The project focuses on visual editing, content structure, responsive behavior, and conversion-oriented improvements to keep the page aligned with branding and business goals.",
         stack: [
-            "Active Directory", "WordPress", "VMware", "Windows Server"
+            "WordPress", "Elementor", "HTML5", "CS3"
         ],
         highlights: [
-            "User, group, and policy administration in Active Directory",
-            "Functional management and maintenance of corporate WordPress sites",
-            "Creation and deployment of services and virtual machines with VMware",
-            "Practical IT operations experience in production environments"
+            "Creation and maintenance of landing page sections using Elementor",
+            "Visual and structural optimization focused on conversion and user experience",
+            "Responsive adjustments for desktop, tablet, and mobile devices",
+            "Content updates, layout consistency, and design system alignment"
         ],
         links: [],
         collections: [
-            gestion,
-            gestion2,
             gestion3,
             gestion4,
             gestion5,
             gestion6
         ],
         slides: {
-            [gestion]: "Operations workspace focused on administrative tasks and daily control.",
-            [gestion2]: "Structured record management to keep internal processes consistent.",
-            [gestion3]: "Detailed views to validate data and execute precise adjustments.",
-            [gestion4]: "Administration flows for onboarding, changes, and operational support.",
-            [gestion5]: "Complementary modules focused on services and virtual infrastructure.",
-            [gestion6]: "Feature walkthrough that connects identity, corporate web, and virtualization."
+            [gestion3]: "Elementor editor workspace with structured sections for key landing content.",
+            [gestion4]: "Design and content blocks aligned with branding and campaign messaging.",
+            [gestion5]: "Responsive tuning to ensure visual consistency across all device breakpoints.",
+            [gestion6]: "Final landing page flow optimized for clarity, engagement, and conversion."
         }
     }
 }

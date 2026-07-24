@@ -10,9 +10,9 @@ const projectsData = {
         slideDurationSeconds: 7,
         category: "Competitive NLP with Transformers + LoRA",
         longDescription:
-            "Sentiment Analysis Model is a language model trained with Transformers and LoRA fine-tuning to deliver robust sentiment classification. This work was part of the model set that earned me first place in IBM's national competition. The repository is public on Hugging Face, showcasing both performance and full technical traceability.",
+            "Sentiment Analysis Model is a language model trained with Transformers and LoRA fine-tuning to deliver robust sentiment classification. This work was part of the model set that earned me the max puntuation in IBM's national competition. The repository is public on Hugging Face, showcasing both performance and full technical traceability.",
         stack: [
-            "sklearn", "PyTorch", "Google Colab", "Transformers", "MLFlow", "Pandas", "numpy"
+            "sklearn", "PyTorch", "Google Colab", "Transformers", "MLFlow", "Pandas", "NumPy"
         ],
         highlights: [
             "Model trained with Transformers + LoRA for efficient fine-tuning",
@@ -21,7 +21,7 @@ const projectsData = {
             "Public Hugging Face repository for validation and deployment"
         ],
         links: [
-            { label: "Hugging Face - Public Model", href: "https://huggingface.co/SenaSoft/chdv-sentiment-analysis", isPrivate: false }
+            { label: "Hugging Face", href: "https://huggingface.co/SenaSoft/chdv-sentiment-analysis", isPrivate: false }
         ],
         collections: [
             sa,
