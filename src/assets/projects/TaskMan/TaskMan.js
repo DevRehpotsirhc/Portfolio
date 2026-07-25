@@ -1,6 +1,4 @@
 import TaskMan from "./TaskMan.webp"
-import TaskMan2 from "./TaskMan2.webp"
-import TaskMan3 from "./TaskMan3.webp"
 import TaskMan4 from "./TaskMan4.webp"
 
 const projectsData = {
@@ -24,14 +22,10 @@ const projectsData = {
         ],
         collections: [
             TaskMan,
-            TaskMan2,
-            TaskMan3,
             TaskMan4
         ],
         slides: {
             [TaskMan]: "Main bot workspace showing run history and overall network check health.",
-            [TaskMan2]: "Connected-device detail view with key diagnostics for faster troubleshooting.",
-            [TaskMan3]: "Port and latency consolidation to spot bottlenecks and unstable links.",
             [TaskMan4]: "Monitoring panel for event tracking and incident prioritization."
         }
     }
