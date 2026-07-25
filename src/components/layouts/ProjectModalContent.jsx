@@ -65,7 +65,7 @@ export const ProjectModalContent = ({ project }) => {
                             return (
                                 <figure
                                     key={`${project.id}-collection-${index}`}
-                                    className={`group relative min-h-24 overflow-hidden rounded-xl border border-slate-300/70 bg-slate-100 dark:border-slate-700 dark:bg-slate-900/40 ${collageClass}`}
+                                    className={`group relative min-h-24 overflow-hidden rounded-xl border border-slate-300/70 bg-slate-100 dark:border-slate-700 dark:bg-slate-900/40 cursor-pointer ${collageClass}`}
                                 >
                                     <img
                                         src={image}
