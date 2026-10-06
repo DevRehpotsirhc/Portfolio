@@ -122,9 +122,9 @@ export const TechnicalSkills = () => {
                         type="button"
                         title="Open all technical skills"
                         onClick={() => setIsModalOpen(true)}
-                        className="group flex min-h-25 items-center justify-center text-center transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
+                        className="group relative flex min-h-25 items-center justify-center text-center transition-all duration-200 hover:-translate-y-0.5 cursor-pointer show-all-hint"
                     >
-                        <p className="text-xl">Show All...</p>
+                        <p className="text-xl show-all-tap">Show All...</p>
                     </Card>
                 </div>
             </article>

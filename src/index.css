@@ -159,3 +159,65 @@
 .company-marquee-set {
   flex-shrink: 0;
 }
+
+@keyframes showAllTap {
+  0%, 100% {
+    transform: scale(1);
+  }
+  6% {
+    transform: scale(1.06);
+  }
+  14% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.04);
+  }
+  28%, 70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes showAllRipple {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.6;
+  }
+  16% {
+    transform: scale(1.05);
+    opacity: 0;
+  }
+  21% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  32%, 100% {
+    transform: scale(1.04);
+    opacity: 0;
+  }
+}
+
+.show-all-hint::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1.5px solid currentColor;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  animation: showAllRipple 3s ease-in-out infinite;
+}
+
+.show-all-tap {
+  animation: showAllTap 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .show-all-hint::after,
+  .show-all-tap {
+    animation: none;
+  }
+}

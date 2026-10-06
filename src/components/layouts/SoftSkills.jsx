@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Brain, Crown, RefreshCw, Rocket, Scale, Users } from "lucide-react"
 import { Card } from "../ui/Card"
 
@@ -35,32 +35,82 @@ const softSkillsData = {
     }
 }
 
+const SoftSkillCard = ({ name, content }) => {
+    const Icon = content.icon
+    const descRef = useRef(null)
+    const [showTop, setShowTop] = useState(false)
+    const [showBottom, setShowBottom] = useState(false)
+
+    const checkScroll = () => {
+        const el = descRef.current
+        if (!el) return
+
+        setShowTop(el.scrollTop > 0)
+        setShowBottom(el.scrollTop + el.clientHeight < el.scrollHeight)
+    }
+
+    useEffect(() => {
+        const el = descRef.current
+        if (!el) return
+
+        checkScroll()
+        const observer = new ResizeObserver(checkScroll)
+        observer.observe(el)
+        window.addEventListener("resize", checkScroll)
+
+        return () => {
+            observer.disconnect()
+            window.removeEventListener("resize", checkScroll)
+        }
+    }, [])
+
+    const isMobile = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches
+
+    return (
+        <Card className="group min-h-40 items-start rounded-xl border-slate-300/80 bg-slate-50/75 p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-slate-300/40 dark:border-dark/70 dark:bg-dark/35 dark:hover:shadow-secundary-900/30">
+            <div className="flex items-center gap-3">
+                <div className={`grid size-10 shrink-0 place-items-center rounded-md ring-1 ${content.iconClassName}`}>
+                    <Icon size={20} strokeWidth={2.2} aria-hidden="true" />
+                </div>
+                <p className="text-base font-semibold text-slate-800 break-words dark:text-slate-100">{name}</p>
+            </div>
+
+            <div className="relative mt-2 w-full">
+                <p
+                    ref={descRef}
+                    onScroll={checkScroll}
+                    className={`max-h-24 pr-1 text-sm leading-6 break-words hyphens-auto text-slate-600 dark:text-slate-300 ${
+                        isMobile ? "overflow-y-auto" : "overflow-hidden hover:overflow-y-auto"
+                    }`}
+                >
+                    {content.desc}
+                </p>
+
+                {showTop && (
+                    <div className="pointer-events-none absolute top-0 left-0 h-5 w-full bg-linear-to-b from-slate-50/75 to-transparent dark:from-dark/35" />
+                )}
+
+                {showBottom && (
+                    <div className="pointer-events-none absolute bottom-0 left-0 h-5 w-full bg-linear-to-t from-slate-50/75 to-transparent dark:from-dark/35" />
+                )}
+            </div>
+        </Card>
+    )
+}
+
 export const SoftSkills = () => {
     const softSkills = useMemo(() => Object.entries(softSkillsData), [])
 
     return (
         <article className="rounded-2xl border border-slate-300/80 bg-white/80 p-5 shadow-md shadow-slate-300/40 backdrop-blur-sm dark:border-dark/60 dark:bg-dark/30 dark:shadow-secundary-900/30">
-            <h3 className="mb-4 text-lg font-semibold text-dark dark:text-white">Soft skills</h3>
+            <header className="mb-4">
+                <h3 className="text-lg font-semibold text-dark dark:text-white">Soft skills</h3>
+            </header>
 
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
-                {softSkills.map(([name, content]) => {
-                    const Icon = content.icon
-
-                    return (
-                        <Card
-                            key={name}
-                            className="group min-h-40 items-start rounded-xl border-slate-300/80 bg-slate-50/75 p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-slate-300/40 dark:border-dark/70 dark:bg-dark/35 dark:hover:shadow-secundary-900/30"
-                        >
-                            <div className="mb-3 flex items-center gap-3">
-                                <div className={`grid size-10 place-items-center rounded-md ring-1 ${content.iconClassName}`}>
-                                    <Icon size={20} strokeWidth={2.2} aria-hidden="true" />
-                                </div>
-                                <p className="text-base font-semibold text-slate-800 dark:text-slate-100">{name}</p>
-                            </div>
-                            <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{content.desc}</p>
-                        </Card>
-                    )
-                })}
+            <div className="grid grid-cols-2 gap-3 xl:grid-cols-3">
+                {softSkills.map(([name, content]) => (
+                    <SoftSkillCard key={name} name={name} content={content} />
+                ))}
             </div>
         </article>
     )

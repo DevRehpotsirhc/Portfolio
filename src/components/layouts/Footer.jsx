@@ -15,6 +15,30 @@ export const Footer = () => {
             <small className="relative w-[70svw] max-w-100 flex items-center text-xs text-center text-slate-600 dark:text-slate-500">
                 <p>If you use code from this portfolio, please credit and reference this website or repository. Thx <span className="text-[13.8px] -mr-px">{"<"}</span>3</p>
             </small>
+            <section className="relative w-[90svw] max-w-5xl text-xs leading-relaxed text-slate-600 dark:text-slate-400 text-left">
+                <p className="mb-3 font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">Disclaimer</p>
+                <div className="grid grid-cols-1 gap-5 min-[640px]:grid-cols-3">
+                    <article className="flex flex-col gap-1.5">
+                        <h4 className="font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">Trademarks, logos & icons</h4>
+                        <p>
+                            All trademarks, brand names, logos, and technology icons shown in this portfolio belong to their respective owners. They are used solely to identify the tools, technologies, and services referenced, for informative purposes only.
+                        </p>
+                    </article>
+                    <article className="flex flex-col gap-1.5">
+                        <h4 className="font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">Projects, screenshots & images</h4>
+                        <p>
+                            Screenshots, images, and any project-related material belong to their respective owners and clients. They are published only to illustrate the work I have done or participated in, without claiming ownership of the brands or products featured.
+                        </p>
+                    </article>
+                    <article className="flex flex-col gap-1.5">
+                        <h4 className="font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">Purpose & removal requests</h4>
+                        <p>
+                            This portfolio is non-commercial and informational; no affiliation, sponsorship, or endorsement is implied. If you are the owner of any asset and have a request or concern, contact me
+                            and I will promptly remove or update it.
+                        </p>
+                    </article>
+                </div>
+            </section>
         </footer>
     )
 }
