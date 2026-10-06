@@ -12,9 +12,6 @@ export const Footer = () => {
                     <p className="flex items-center max-[300px]:text-sm text-slate-800 dark:text-slate-400">Created by Christopher Aponte</p>
                 </article>
             </main>
-            <small className="relative w-[70svw] max-w-100 flex items-center text-xs text-center text-slate-600 dark:text-slate-500">
-                <p>If you use code from this portfolio, please credit and reference this website or repository. Thx <span className="text-[13.8px] -mr-px">{"<"}</span>3</p>
-            </small>
             <section className="relative w-[90svw] max-w-5xl text-xs leading-relaxed text-slate-600 dark:text-slate-400 text-left">
                 <p className="mb-3 font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">Disclaimer</p>
                 <div className="grid grid-cols-1 gap-5 min-[640px]:grid-cols-3">
@@ -39,6 +36,9 @@ export const Footer = () => {
                     </article>
                 </div>
             </section>
+            <small className="relative w-[70svw] max-w-100 flex items-center text-xs text-center text-slate-600 dark:text-slate-500">
+                <p>If you use code from this portfolio, please credit and reference this website or repository. Thx <span className="text-[13.8px] -mr-px">{"<"}</span>3</p>
+            </small>
         </footer>
     )
 }

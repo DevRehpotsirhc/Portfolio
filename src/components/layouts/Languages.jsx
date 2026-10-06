@@ -21,7 +21,7 @@ export const Languages = () => {
         <article className="rounded-2xl border border-slate-300/80 bg-white/80 p-5 shadow-md shadow-slate-300/40 backdrop-blur-sm dark:border-dark/60 dark:bg-dark/30 dark:shadow-secundary-900/30">
             <h3 className="mb-4 text-lg font-semibold text-dark dark:text-white">Languages</h3>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3 max-[324.98px]:grid-cols-1">
                 {languages.map((language) => {
                     const percentage = Math.round(language.proficiency * 100)
 
