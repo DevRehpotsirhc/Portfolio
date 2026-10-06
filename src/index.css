@@ -161,41 +161,102 @@
 }
 
 @keyframes showAllTap {
-  0%, 100% {
+  0%, 14% {
     transform: scale(1);
   }
-  6% {
+  16% {
     transform: scale(1.06);
   }
-  14% {
+  20% {
     transform: scale(1);
   }
-  20% {
+  26% {
     transform: scale(1.04);
   }
-  28%, 70% {
+  30%, 100% {
     transform: scale(1);
   }
 }
 
 @keyframes showAllRipple {
-  0% {
+  0%, 14% {
     transform: scale(1);
     opacity: 0;
   }
-  5% {
+  16% {
+    transform: scale(1.02);
     opacity: 0.6;
   }
-  16% {
+  23% {
     transform: scale(1.05);
     opacity: 0;
   }
-  21% {
-    transform: scale(1);
+  26% {
+    transform: scale(1.02);
     opacity: 0.4;
   }
-  32%, 100% {
+  34%, 100% {
     transform: scale(1.04);
+    opacity: 0;
+  }
+}
+
+@keyframes showHandClick {
+  0% {
+    transform: translate(0, 8px);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  16% {
+    transform: translate(0, -16px);
+  }
+  22% {
+    transform: translate(0, 0);
+  }
+  26% {
+    transform: translate(0, -16px);
+  }
+  32% {
+    transform: translate(0, 0);
+  }
+  55% {
+    transform: translate(0, -4px);
+  }
+  72% {
+    transform: translate(0, 0);
+  }
+  90% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 8px);
+    opacity: 0;
+  }
+}
+
+@keyframes showHandTipRipple {
+  0%, 14% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  16% {
+    transform: scale(0.5);
+    opacity: 0.75;
+  }
+  24% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  26% {
+    transform: scale(0.5);
+    opacity: 0.75;
+  }
+  34%, 100% {
+    transform: scale(1.4);
     opacity: 0;
   }
 }
@@ -215,9 +276,41 @@
   animation: showAllTap 3s ease-in-out infinite;
 }
 
+.show-all-hand {
+  position: absolute;
+  left: calc(50% + 10px);
+  top: calc(50% + 10px);
+  width: 30px;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 3px rgb(15 23 42 / 0.25));
+  animation: showHandClick 3s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.show-all-hand svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.show-hand-tip {
+  position: absolute;
+  left: 22%;
+  top: 5%;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  opacity: 0;
+  animation: showHandTipRipple 3s ease-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .show-all-hint::after,
-  .show-all-tap {
+  .show-all-tap,
+  .show-all-hand,
+  .show-hand-tip {
     animation: none;
   }
 }

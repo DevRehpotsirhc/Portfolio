@@ -124,6 +124,19 @@ export const TechnicalSkills = () => {
                         onClick={() => setIsModalOpen(true)}
                         className="group relative flex min-h-25 items-center justify-center text-center transition-all duration-200 hover:-translate-y-0.5 cursor-pointer show-all-hint"
                     >
+                        <span className="show-all-hand" aria-hidden="true">
+                            <svg viewBox="0 0 64 78" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                                <g fill="currentColor">
+                                    <rect x="6" y="34" width="54" height="42" rx="17" />
+                                    <rect x="2" y="46" width="13" height="24" rx="6.5" transform="rotate(-22 8.5 58)" />
+                                    <rect x="8" y="4" width="12" height="46" rx="6" />
+                                    <rect x="22" y="12" width="12" height="38" rx="6" />
+                                    <rect x="36" y="17" width="12" height="33" rx="6" />
+                                    <rect x="50" y="24" width="11" height="27" rx="5.5" />
+                                </g>
+                            </svg>
+                            <span className="show-hand-tip" />
+                        </span>
                         <p className="text-xl show-all-tap">Show All...</p>
                     </Card>
                 </div>
