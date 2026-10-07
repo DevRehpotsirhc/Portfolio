@@ -65,6 +65,7 @@ const SoftSkillCard = ({ name, content }) => {
     }, [content.desc])
 
     const isMobile = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches
+    const fadeMask = `linear-gradient(to bottom, transparent 0, #000 ${showTop ? "1.25rem" : "0px"}, #000 calc(100% - ${showBottom ? "1.25rem" : "0px"}), transparent 100%)`
 
     return (
         <Card className="group @container min-h-40 w-full items-start overflow-hidden rounded-xl border-slate-300/80 bg-slate-50/75 p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-slate-300/40 dark:border-dark/70 dark:bg-dark/35 dark:hover:shadow-secundary-900/30">
@@ -79,20 +80,13 @@ const SoftSkillCard = ({ name, content }) => {
                 <p
                     ref={descRef}
                     onScroll={checkScroll}
+                    style={{ WebkitMaskImage: fadeMask, maskImage: fadeMask }}
                     className={`max-h-24 pr-1 text-sm leading-6 text-slate-600 dark:text-slate-300 ${
                         isMobile ? "overflow-y-auto" : "overflow-hidden hover:overflow-y-auto"
                     }`}
                 >
                     {content.desc}
                 </p>
-
-                {showTop && (
-                    <div className="pointer-events-none absolute top-0 left-0 h-5 w-full bg-linear-to-b from-slate-50/75 to-transparent dark:from-dark/35" />
-                )}
-
-                {showBottom && (
-                    <div className="pointer-events-none absolute bottom-0 left-0 h-5 w-full bg-linear-to-t from-slate-50/75 to-transparent dark:from-dark/35" />
-                )}
             </div>
         </Card>
     )

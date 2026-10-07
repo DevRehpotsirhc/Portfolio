@@ -1,3 +1,57 @@
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
+const DEFAULT_FADE_FROM = "from-[color:var(--card-light-bg,white)] dark:from-[color:var(--card-dark-bg)";
+
+const ScrollFade = ({ children, className = "", maxHeight = "max-h-24", fadeFrom = DEFAULT_FADE_FROM, as: Tag = "div" }) => {
+    const rollRef = useRef(null);
+    const [showTop, setShowTop] = useState(false);
+    const [showBottom, setShowBottom] = useState(false);
+
+    const checkScroll = useCallback(() => {
+        const roll = rollRef.current;
+        if (!roll) return;
+
+        setShowTop(roll.scrollTop > 0);
+        // -1 para evitar errores de redondeo en pantallas con zoom/subpíxeles
+        setShowBottom(roll.scrollTop + roll.clientHeight < roll.scrollHeight - 1);
+    }, []);
+
+    useEffect(() => {
+        checkScroll();
+        window.addEventListener("resize", checkScroll);
+
+        // Recalcula si cambia el contenido o el tamaño del contenedor
+        const observer = typeof ResizeObserver !== "undefined" ? new ResizeObserver(checkScroll) : null;
+        if (observer && rollRef.current) observer.observe(rollRef.current);
+
+        return () => {
+            window.removeEventListener("resize", checkScroll);
+            observer?.disconnect();
+        };
+    }, [checkScroll, children]);
+
+    return (
+        <div className="relative w-full">
+            <Tag
+                ref={rollRef}
+                onScroll={checkScroll}
+                className={`${maxHeight} pr-2 overflow-y-auto custom-scrollbar ${className}`}
+            >
+                {children}
+            </Tag>
+
+            <div
+                aria-hidden="true"
+                className={`absolute top-0 left-0 w-full h-6 bg-linear-to-b ${fadeFrom} to-transparent pointer-events-none transition-opacity duration-300 ${showTop ? "opacity-100" : "opacity-0"}`}
+            />
+            <div
+                aria-hidden="true"
+                className={`absolute bottom-0 left-0 w-full h-6 bg-linear-to-t ${fadeFrom} to-transparent pointer-events-none transition-opacity duration-300 ${showBottom ? "opacity-100" : "opacity-0"}`}
+            />
+        </div>
+    );
+};
+
 export const Card = ({
     as: Component = "div",
     className = "",
@@ -9,6 +63,8 @@ export const Card = ({
     darkModeTextColor = "#f8fafc",
     lightModeBgColor = "transparent",
     darkModeBgColor = "transparent",
+    scrollMaxHeight = "max-h-24",
+    fadeFrom = DEFAULT_FADE_FROM,
     style,
     ...props
 }) => {
@@ -34,7 +90,17 @@ export const Card = ({
                     className="w-full h-auto object-contain mx-auto"
                 />
             )}
-            {text && <p className="w-full text-center">{text}</p>}
+
+            {text && (
+                <ScrollFade
+                    as="p"
+                    maxHeight={scrollMaxHeight}
+                    fadeFrom={fadeFrom}
+                    className="w-full text-center"
+                >
+                    {text}
+                </ScrollFade>
+            )}
             {children}
         </Component>
     )
