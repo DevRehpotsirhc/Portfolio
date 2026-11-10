@@ -28,3 +28,6 @@ storybook-static
 
 # Others
 anotations.*
+
+# Local CV build (npm run cv)
+public/main.pdf
