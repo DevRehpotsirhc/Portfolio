@@ -119,7 +119,7 @@ export const useProjectModalPreview = (projectId) => {
         }
 
         if (action === "open") {
-            const { image, event, sourceKey } = payload
+            const { image, index, event, sourceKey } = payload
 
             if (!projectId || (event.type === "click" && event.detail === 0)) {
                 return
@@ -135,6 +135,7 @@ export const useProjectModalPreview = (projectId) => {
 
             setPreviewData({
                 image,
+                index,
                 sourceKey,
                 originRect: sourceRect,
                 targetRect: getCenteredPreviewRect(aspectRatio),
@@ -158,6 +159,32 @@ export const useProjectModalPreview = (projectId) => {
             return
         }
 
+        if (action === "navigate") {
+            // Swap the open image in place; the origin follows the new thumbnail so closing flies back to it.
+            const { image, index, sourceElement } = payload
+            const current = previewDataRef.current
+
+            if (!current || !current.visible || !sourceElement) {
+                return
+            }
+
+            const sourceRect = getElementRect(sourceElement)
+            const aspectRatio = sourceElement.naturalWidth && sourceElement.naturalHeight
+                ? sourceElement.naturalWidth / sourceElement.naturalHeight
+                : sourceRect.width / sourceRect.height
+
+            setPreviewData((prev) => prev ? {
+                ...prev,
+                image,
+                index,
+                sourceKey: `${projectId}-collection-${index}`,
+                originRect: sourceRect,
+                targetRect: getCenteredPreviewRect(aspectRatio)
+            } : prev)
+
+            return
+        }
+
         if (action === "toggle") {
             const { image, index, event } = payload
             const sourceKey = `${projectId}-collection-${index}`
@@ -167,7 +194,7 @@ export const useProjectModalPreview = (projectId) => {
                 return
             }
 
-            handlePreview("open", { image, event, sourceKey })
+            handlePreview("open", { image, index, event, sourceKey })
         }
     }, [clearPreviewTimers, projectId])
 

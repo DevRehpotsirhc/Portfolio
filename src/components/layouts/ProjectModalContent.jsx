@@ -1,13 +1,78 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Alert } from "../ui/Alert"
 import { useProjectModalPreview } from "../../hooks/useProjectModalPreview"
 import { ui } from "../../data"
 
 const t = ui.projects
+const SWIPE_THRESHOLD_PX = 40
+
+const PreviewArrow = ({ direction, onClick }) => {
+    const isNext = direction === "next"
+    const Icon = isNext ? ChevronRight : ChevronLeft
+
+    return (
+        <button
+            type="button"
+            aria-label={isNext ? t.nextImage : t.prevImage}
+            onClick={(event) => {
+                event.stopPropagation()
+                onClick()
+            }}
+            className={`fixed top-1/2 z-120 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/25 bg-black/50 text-white shadow-lg backdrop-blur-sm transition-[background-color,scale] duration-200 hover:bg-black/75 active:scale-90 ${
+                isNext ? "right-3 sm:right-6" : "left-3 sm:left-6"
+            }`}
+        >
+            <Icon className="size-6" />
+        </button>
+    )
+}
 
 export const ProjectModalContent = ({ project }) => {
     const [showPrivateAlert, setShowPrivateAlert] = useState(false)
     const { previewData, handlePreview, getPreviewFigureStyle } = useProjectModalPreview(project?.id)
+    const thumbnailRefs = useRef([])
+    const touchStartXRef = useRef(null)
+
+    const collections = project?.collections ?? []
+    const total = collections.length
+    const canNavigate = Boolean(previewData?.visible) && total > 1
+
+    const showImage = (direction) => {
+        if (!previewData || total < 2) {
+            return
+        }
+
+        const nextIndex = (previewData.index + (direction === "next" ? 1 : -1) + total) % total
+        handlePreview("navigate", {
+            image: collections[nextIndex],
+            index: nextIndex,
+            sourceElement: thumbnailRefs.current[nextIndex]
+        })
+    }
+
+    // Arrow keys move between images; Escape closes only the preview, not the whole project modal.
+    const isPreviewOpen = Boolean(previewData)
+
+    useEffect(() => {
+        if (!isPreviewOpen) {
+            return undefined
+        }
+
+        const onKeyDown = (event) => {
+            if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+                event.preventDefault()
+                event.stopImmediatePropagation()
+                showImage(event.key === "ArrowRight" ? "next" : "prev")
+            } else if (event.key === "Escape") {
+                event.stopImmediatePropagation()
+                handlePreview("close")
+            }
+        }
+
+        window.addEventListener("keydown", onKeyDown, true)
+        return () => window.removeEventListener("keydown", onKeyDown, true)
+    }, [isPreviewOpen, handlePreview, showImage])
 
     if (!project) {
         return null
@@ -71,6 +136,7 @@ export const ProjectModalContent = ({ project }) => {
                                     className={`group relative min-h-24 overflow-hidden rounded-xl border border-slate-300/70 bg-slate-100 dark:border-slate-700 dark:bg-slate-900/40 cursor-pointer ${collageClass}`}
                                 >
                                     <img
+                                        ref={(element) => { thumbnailRefs.current[index] = element }}
                                         src={image}
                                         alt={`${project.name} collection ${index + 1}`}
                                         loading="lazy"
@@ -140,6 +206,25 @@ export const ProjectModalContent = ({ project }) => {
                             event.stopPropagation()
                             handlePreview("close")
                         }}
+                        onTouchStart={(event) => {
+                            touchStartXRef.current = event.touches[0]?.clientX ?? null
+                        }}
+                        onTouchEnd={(event) => {
+                            const startX = touchStartXRef.current
+                            touchStartXRef.current = null
+                            const endX = event.changedTouches[0]?.clientX
+
+                            if (startX === null || endX === undefined) {
+                                return
+                            }
+
+                            const deltaX = endX - startX
+                            if (Math.abs(deltaX) >= SWIPE_THRESHOLD_PX) {
+                                // Swallow the click that follows the swipe so it doesn't close the preview.
+                                event.preventDefault()
+                                showImage(deltaX < 0 ? "next" : "prev")
+                            }
+                        }}
                         className="fixed overflow-hidden rounded-2xl border border-white/20 bg-slate-900 shadow-2xl shadow-black/40 transition-[transform,opacity] ease-in-out will-change-transform"
                         style={getPreviewFigureStyle(previewData)}
                     >
@@ -151,6 +236,19 @@ export const ProjectModalContent = ({ project }) => {
                             className="h-full w-full object-contain"
                         />
                     </figure>
+
+                    {canNavigate ? (
+                        <>
+                            <PreviewArrow direction="prev" onClick={() => showImage("prev")} />
+                            <PreviewArrow direction="next" onClick={() => showImage("next")} />
+                            <p
+                                aria-live="polite"
+                                className="fixed bottom-4 left-1/2 z-120 -translate-x-1/2 rounded-full bg-black/60 px-3 py-1 text-xs font-semibold tabular-nums text-white"
+                            >
+                                {previewData.index + 1} / {total}
+                            </p>
+                        </>
+                    ) : null}
                 </div>
             ) : null}
         </section>
