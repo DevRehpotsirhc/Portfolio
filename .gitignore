@@ -29,5 +29,8 @@ storybook-static
 # Others
 anotations.*
 
+# Generated test reports
+tests/reports/
+
 # Local CV build (npm run cv)
 public/main.pdf

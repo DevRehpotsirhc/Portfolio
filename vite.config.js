@@ -12,8 +12,21 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: 'https://devrehpotsirhc.github.io/Portfolio',
+  // Pre-bundle test deps so Vitest browser runs don't reload mid-run.
+  optimizeDeps: {
+    include: ['storybook/test']
+  },
   test: {
+    // Console output + HTML report in tests/reports/ after every run
+    reporters: ['default', './tests/reporter.js'],
     projects: [{
+      extends: true,
+      test: {
+        name: 'unit',
+        environment: 'node',
+        include: ['src/**/*.test.{js,jsx}', 'scripts/**/*.test.js']
+      }
+    }, {
       extends: true,
       plugins: [
       // The plugin will run tests for the stories defined in your Storybook config

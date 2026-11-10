@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "test": "vitest run",
+    "test:unit": "vitest run --project unit",
     "cv": "node scripts/build-cv.js",
     "cv-pdf": "node scripts/build-cv.js --publish",
     "preview": "vite preview",
