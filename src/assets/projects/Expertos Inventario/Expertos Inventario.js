@@ -19,7 +19,7 @@ const projectsData = {
             // Frontend
             "JavaScript", "React", "Tailwind", "Vite",
             // UI & Visualization
-            "Chart.js", "Maizzel", "Storybook",
+            "Chart.js", "Maizzle", "Storybook",
             // Data & Analysis
             "Pandas", "Jupyter Notebook",
             // Testing & Tools
