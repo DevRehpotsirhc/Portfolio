@@ -16,7 +16,7 @@ export const Footer = () => {
                     ))}
                 </div>
             </section>
-            <h1 className="mt-8 sm:mt-15 uppercase tracking-[2px] text-center text-sm min-[300px]:tracking-[6px] min-[380px]:text-xl min-[500px]:tracking-[8px] min-[587px]:tracking-[13px] font-semibold text-dark dark:text-white">{t.thanks}</h1>
+            <p className="mt-8 sm:mt-15 uppercase tracking-[2px] text-center text-sm min-[300px]:tracking-[6px] min-[380px]:text-xl min-[500px]:tracking-[8px] min-[587px]:tracking-[13px] font-semibold text-dark dark:text-white">{t.thanks}</p>
             <div className="flex flex-col w-full max-w-150 max-[380px]:max-w-120 items-center justify-between gap-5">
                 <article className="flex max-[380px]:flex-col gap-2">
                     <Contact />
