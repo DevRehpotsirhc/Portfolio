@@ -21,7 +21,7 @@ const projectEntries = Object.entries(projectsData).map(([name, config]) => ({
 }))
 
 /** Labelled "previous / next project" button: says where it goes, unlike a bare arrow. */
-const ProjectNavButton = ({ direction, label, projectName, ariaLabel, onClick }) => {
+const ProjectNavButton = ({ direction, label, ariaLabel, onClick }) => {
     const isNext = direction === "next"
     const Icon = isNext ? ChevronRight : ChevronLeft
 
@@ -29,17 +29,13 @@ const ProjectNavButton = ({ direction, label, projectName, ariaLabel, onClick })
         <button
             type="button"
             aria-label={ariaLabel}
-            title={projectName}
             onClick={onClick}
             className={`group/nav flex min-h-11 min-w-0 cursor-pointer items-center gap-2 rounded-xl border border-b-4 border-medium-700 bg-medium-500 px-3 py-1.5 text-white shadow-sm transition-[translate,border-width,background-color,box-shadow] duration-200 hover:bg-medium-600 hover:shadow-md active:translate-y-0.5 active:border-b-2 active:duration-75 dark:border-secundary-800 dark:bg-secundary-700 dark:hover:bg-secundary-800 ${
                 isNext ? "flex-row-reverse text-right" : "text-left"
             }`}
         >
             <Icon className={`size-5 shrink-0 transition-transform duration-300 ${isNext ? "group-hover/nav:translate-x-0.5" : "group-hover/nav:-translate-x-0.5"}`} />
-            <span className="flex min-w-0 flex-col leading-tight">
-                <span className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white/95">{label}</span>
-                <span className="hidden max-w-40 truncate text-sm font-semibold sm:block">{projectName}</span>
-            </span>
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white/95">{label}</span>
         </button>
     )
 }
@@ -535,7 +531,6 @@ export const Projects = () => {
                             <ProjectNavButton
                                 direction="prev"
                                 label={t.prevShort}
-                                projectName={prevProject.name}
                                 ariaLabel={`${t.prevProject}: ${prevProject.name}`}
                                 onClick={() => goToProject("prev")}
                             />
@@ -545,7 +540,6 @@ export const Projects = () => {
                             <ProjectNavButton
                                 direction="next"
                                 label={t.nextShort}
-                                projectName={nextProject.name}
                                 ariaLabel={`${t.nextProject}: ${nextProject.name}`}
                                 onClick={() => goToProject("next")}
                             />
