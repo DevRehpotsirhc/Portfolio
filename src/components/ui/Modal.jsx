@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react"
+import { createPortal } from "react-dom"
 import { X } from "lucide-react"
 import { useClickOutside } from "../../hooks/useClickOutside"
+import { usePresence } from "../../hooks/usePresence"
 
 const overlayBaseStyles = "fixed inset-0 z-100 flex items-center justify-center bg-slate-950/70 p-3 sm:p-6 backdrop-blur-sm"
 const panelBaseStyles = "max-h-[88svh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-slate-300 bg-background-light px-4 pb-4 pt-0 shadow-2xl dark:border-slate-700 dark:bg-background-dark sm:px-6 sm:pb-6 sm:pt-0"
@@ -19,6 +21,7 @@ export const Modal = ({
     contentClassName = ""
 }) => {
     const panelRef = useRef(null)
+    const { mounted, state } = usePresence(isOpen, 180)
 
     useClickOutside([panelRef], onClose, isOpen)
 
@@ -42,7 +45,7 @@ export const Modal = ({
         }
     }, [isOpen, onClose])
 
-    if (!isOpen) {
+    if (!mounted) {
         return null
     }
 
@@ -51,9 +54,11 @@ export const Modal = ({
     const headerClasses = `${headerBaseStyles} ${headerClassName}`.trim()
     const contentClasses = `space-y-6 pt-2 ${contentClassName}`.trim()
 
-    return (
-        <div className={overlayClasses} role="dialog" aria-modal="true" aria-label={ariaLabel || title}>
-            <article ref={panelRef} className={panelClasses}>
+    // Rendered into <body> so no ancestor (transform, filter, content-visibility…)
+    // can become the containing block of this fixed overlay.
+    return createPortal(
+        <div className={`motion-overlay ${overlayClasses}`} data-state={state} role="dialog" aria-modal="true" aria-label={ariaLabel || title}>
+            <article ref={panelRef} className={`motion-panel ${panelClasses}`} data-state={state}>
                 <header className={headerClasses}>
                     <div>
                         {subtitle ? (
@@ -75,6 +80,7 @@ export const Modal = ({
 
                 <div className={contentClasses}>{children}</div>
             </article>
-        </div>
+        </div>,
+        document.body
     )
 }

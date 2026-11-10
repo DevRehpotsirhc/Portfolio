@@ -1,39 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { Brain, Crown, RefreshCw, Rocket, Scale, Users } from "lucide-react"
 import { Card } from "../ui/Card"
-
-const softSkillsData = {
-    "Leadership": {
-        icon: Crown,
-        iconClassName: "bg-teal-100 text-teal-700 ring-teal-300/70 dark:bg-teal-900/40 dark:text-teal-200 dark:ring-teal-500/50",
-        desc: "Ability to guide, motivate, and support teams to achieve shared goals while fostering collaboration and accountability."
-    },
-    "Adaptability": {
-        icon: RefreshCw,
-        iconClassName: "bg-sky-100 text-sky-700 ring-sky-300/70 dark:bg-sky-900/40 dark:text-sky-200 dark:ring-sky-500/50",
-        desc: "Capacity to adjust quickly to changing environments, priorities, and challenges while maintaining productivity."
-    },
-    "Proactivity": {
-        icon: Rocket,
-        iconClassName: "bg-rose-100 text-rose-700 ring-rose-300/70 dark:bg-rose-900/40 dark:text-rose-200 dark:ring-rose-500/50",
-        desc: "Initiative to identify opportunities, solve problems, and take action before issues arise without waiting for direction."
-    },
-    "Strategic Thinking": {
-        icon: Brain,
-        iconClassName: "bg-violet-100 text-violet-700 ring-violet-300/70 dark:bg-violet-900/40 dark:text-violet-200 dark:ring-violet-500/50",
-        desc: "Ability to analyze situations, anticipate future outcomes, and develop effective long-term plans aligned with objectives."
-    },
-    "Teamwork": {
-        icon: Users,
-        iconClassName: "bg-blue-100 text-blue-700 ring-blue-300/70 dark:bg-blue-900/40 dark:text-blue-200 dark:ring-blue-500/50",
-        desc: "Ability to collaborate effectively with others, share knowledge, and contribute to a positive and productive team environment."
-    },
-    "Decision Making": {
-        icon: Scale,
-        iconClassName: "bg-amber-100 text-amber-700 ring-amber-300/70 dark:bg-amber-900/40 dark:text-amber-200 dark:ring-amber-500/50",
-        desc: "Ability to evaluate information, assess risks, and make timely, informed decisions that support organizational goals."
-    }
-}
+import { Reveal } from "../ui/Reveal"
+import { softSkills as softSkillsData, ui } from "../../data"
 
 const SoftSkillCard = ({ name, content }) => {
     const Icon = content.icon
@@ -98,12 +66,14 @@ export const SoftSkills = () => {
     return (
         <article className="rounded-2xl border border-slate-300/80 bg-white/80 p-5 shadow-md shadow-slate-300/40 backdrop-blur-sm dark:border-dark/60 dark:bg-dark/30 dark:shadow-secundary-900/30">
             <header className="mb-4">
-                <h3 className="text-lg font-semibold text-dark dark:text-white">Soft skills</h3>
+                <h3 className="text-lg font-semibold text-dark dark:text-white">{ui.skills.soft.title}</h3>
             </header>
 
             <div className="grid grid-cols-2 gap-3 max-[324.98px]:grid-cols-1 xl:grid-cols-3">
-                {softSkills.map(([name, content]) => (
-                    <SoftSkillCard key={name} name={name} content={content} />
+                {softSkills.map(([name, content], index) => (
+                    <Reveal key={name} className="flex" delay={Math.min(index * 60, 300)}>
+                        <SoftSkillCard name={name} content={content} />
+                    </Reveal>
                 ))}
             </div>
         </article>

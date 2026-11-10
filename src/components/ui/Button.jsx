@@ -19,7 +19,7 @@ export const Button = ({ style = "", type = "button", disabled = false, onClick 
             className={`group/btn relative cursor-pointer w-full flex items-center text-slate-800 dark:text-slate-400 gap-2 p-2 ${others}`}
         >
             <span
-                className={`flex w-full font-semibold items-center justify-center border border-b-8 rounded-xl py-2 px-3 shadow-md group-hover/btn:shadow-medium-500/40 transition-all duration-200 backdrop-blur-md cursor-pointer
+                className={`flex w-full font-semibold items-center justify-center border border-b-8 rounded-xl py-2 px-3 shadow-md group-hover/btn:shadow-medium-500/40 transition-all duration-200 backdrop-blur-md cursor-pointer group-active/btn:translate-y-[3px] group-active/btn:border-b-[5px] group-active/btn:shadow-sm group-active/btn:duration-75
                 bg-background-light/50
                 dark:bg-background-dark/70
                 ${appliedVariant}

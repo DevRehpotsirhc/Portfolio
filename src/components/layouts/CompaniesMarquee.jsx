@@ -1,22 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
-import expertosLogo from "../../assets/expertos.svg"
-import ibmLogo from "../../assets/ibm.svg"
-import senaLogo from "../../assets/sena.svg"
-
-const companiesMarqueeData = {
-    3: {
-        name: "Expertos Consulting",
-        image: expertosLogo
-    },
-    2: {
-        name: "IBM",
-        image: ibmLogo
-    },
-    1: {
-        name: "SENA",
-        image: senaLogo
-    }
-}
+import { companies as companiesData, ui } from "../../data"
 
 const normalizeCompanies = (data) => {
     if (!data || typeof data !== "object") {
@@ -59,7 +42,7 @@ const CompanyLogo = ({ company }) => {
     return <img src={company.image} alt={company.name} className="block h-10 w-24 object-contain sm:h-11 sm:w-28" />
 }
 
-export const CompaniesMarquee = ({ data = companiesMarqueeData }) => {
+export const CompaniesMarquee = ({ data = companiesData }) => {
     const [viewportWidth, setViewportWidth] = useState(1920)
     const companies = normalizeCompanies(data)
 
@@ -88,7 +71,7 @@ export const CompaniesMarquee = ({ data = companiesMarqueeData }) => {
     }
 
     return (
-        <section aria-label="Companies" className="relative my-2 w-full overflow-hidden py-2">
+        <section aria-label={ui.companies.ariaLabel} className="relative my-2 w-full overflow-hidden py-2">
             <div className="pointer-events-none absolute inset-x-0 top-0 flex flex-col gap-0.5">
                 <span className="h-px bg-medium-500/70 dark:bg-secundary-300/70" />
                 <span className="h-px bg-medium-500/70 dark:bg-secundary-300/70" />

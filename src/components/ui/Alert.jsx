@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { AlertTriangle, X } from "lucide-react"
+import { usePresence } from "../../hooks/usePresence"
 
 const infoStyles = "border-medium-500/80 bg-medium-500/80 text-white shadow-medium-500/25 dark:border-secundary-500/80 dark:bg-secundary-500/75 dark:text-secundary-50 dark:shadow-secundary-500/25"
 
@@ -11,6 +12,7 @@ export const Alert = ({
     autoCloseMs = 2800
 }) => {
     const timerRef = useRef(null)
+    const { mounted, state } = usePresence(isOpen, 160)
     const startedAtRef = useRef(null)
     const [remainingMs, setRemainingMs] = useState(autoCloseMs)
     const [isPaused, setIsPaused] = useState(false)
@@ -82,14 +84,15 @@ export const Alert = ({
         }
     }, [clearTimer, isOpen, isPaused, remainingMs, scheduleClose])
 
-    if (!isOpen) {
+    if (!mounted) {
         return null
     }
 
     return (
         <div className="pointer-events-none fixed bottom-5 right-4 z-130 w-[min(92vw,24rem)] sm:bottom-6 sm:right-6" role="status" aria-live="polite">
             <article
-                className={`pointer-events-auto rounded-2xl border px-4 py-3 shadow-xl backdrop-blur-md ${infoStyles}`}
+                data-state={state}
+                className={`motion-toast pointer-events-auto rounded-2xl border px-4 py-3 shadow-xl backdrop-blur-md ${infoStyles}`}
                 role="alert"
                 onMouseEnter={pauseAutoClose}
                 onMouseLeave={resumeAutoClose}
@@ -110,7 +113,7 @@ export const Alert = ({
                     <button
                         type="button"
                         onClick={onClose}
-                        aria-label="Cerrar alerta"
+                        aria-label="Close alert"
                         className="inline-flex size-7 items-center justify-center rounded-lg border border-current/20 bg-white/40 transition-colors hover:bg-white/60 dark:bg-black/20 dark:hover:bg-black/35 cursor-pointer"
                     >
                         <X className="size-4" />

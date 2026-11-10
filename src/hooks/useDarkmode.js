@@ -1,4 +1,22 @@
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
+import { prefersReducedMotion } from "./useReducedMotion";
+
+const applyThemeClass = (isDark) => {
+    document.documentElement.classList.toggle("dark", isDark);
+};
+
+/** Center of the control that triggered the change (falls back to the viewport center). */
+const getRevealOrigin = () => {
+    const active = document.activeElement;
+    if (active && active !== document.body && active.getBoundingClientRect) {
+        const rect = active.getBoundingClientRect();
+        if (rect.width || rect.height) {
+            return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+        }
+    }
+    return { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+};
 
 export const useDarkmode = () => {
 
@@ -13,13 +31,7 @@ export const useDarkmode = () => {
     const [isDark, setIsDark] = useState(getInitialTheme);
 
     useEffect(() => {
-        const root = document.documentElement;
-
-        if (isDark) {
-            root.classList.add("dark");
-        } else {
-            root.classList.remove("dark");
-        }
+        applyThemeClass(isDark);
     }, [isDark]);
 
     useEffect(() => {
@@ -46,7 +58,30 @@ export const useDarkmode = () => {
 
     const setTheme = (value) => {
         sessionStorage.setItem("theme", value ? "dark" : "light");
-        setIsDark(value);
+
+        const commit = () => {
+            flushSync(() => setIsDark(value));
+            applyThemeClass(value);
+        };
+
+        // Circular reveal from the toggle where View Transitions are supported.
+        if (!document.startViewTransition || prefersReducedMotion()) {
+            commit();
+            return;
+        }
+
+        const { x, y } = getRevealOrigin();
+        const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+        const transition = document.startViewTransition(commit);
+
+        transition.ready
+            .then(() => {
+                document.documentElement.animate(
+                    { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+                    { duration: 650, easing: "cubic-bezier(0.16, 1, 0.3, 1)", pseudoElement: "::view-transition-new(root)" }
+                );
+            })
+            .catch(() => {});
     };
 
     return [isDark, setTheme];

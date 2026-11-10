@@ -3,8 +3,8 @@ import { Card } from "../components/ui/Card";
 const CardTestHarness = ({
     as = "div",
     className = "",
-    title = "Card de prueba",
-    description = "Este contenido hijo te sirve para validar estilos, estructura y semántica del componente padre.",
+    title = "Test card",
+    description = "This child content helps validate the parent component's styles, structure, and semantics.",
 }) => {
     return (
         <Card as={as} className={className}>
@@ -30,11 +30,11 @@ export default {
     argTypes: {
         as: {
             control: "text",
-            description: "Elemento HTML renderizado por el componente padre",
+            description: "HTML element rendered by the parent component",
         },
         className: {
             control: "text",
-            description: "Clases adicionales para probar variantes visuales",
+            description: "Extra classes to test visual variants",
         },
         title: {
             control: "text",
@@ -50,7 +50,7 @@ export const Playground = {
         as: "section",
         className: "max-w-md",
         title: "Prueba del componente padre Card",
-        description: "Cambia los controles para validar estilos, wrapper semántico y composición de hijos.",
+        description: "Change the controls to validate styles, the semantic wrapper, and child composition.",
     },
     render: (args) => (
         <div className="min-h-[50vh] w-full bg-background-light p-6 dark:bg-background-dark">
@@ -63,8 +63,8 @@ export const ClickableParent = {
     args: {
         as: "button",
         className: "max-w-md text-left transition hover:scale-[1.01]",
-        title: "Padre como botón",
-        description: "Sirve para probar cuando Card se usa como elemento interactivo.",
+        title: "Parent as button",
+        description: "Tests Card when used as an interactive element.",
     },
     render: (args) => (
         <div className="min-h-[50vh] w-full bg-background-light p-6 dark:bg-background-dark">

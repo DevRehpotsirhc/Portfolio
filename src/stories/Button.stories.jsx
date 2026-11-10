@@ -19,14 +19,14 @@ export const Default = () => {
                 inside={<Moon className="size-7" />}
                 insideStyle="p-2!"
                 byside="Darkmode"
-                onClick={() => alert("¡Hizo click!")}
+                onClick={() => alert("Clicked!")}
             />
 
             <Button
                 inside={
                     <span className="flex flex-wrap items-center justify-center font-semibold gap-2">
                         <Moon className="size-7" />
-                        Activar el modo oscuro del sistema
+                        Enable system dark mode
                     </span>
                 }
             />

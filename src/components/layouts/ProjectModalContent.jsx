@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { Alert } from "../ui/Alert"
 import { useProjectModalPreview } from "../../hooks/useProjectModalPreview"
+import { ui } from "../../data"
+
+const t = ui.projects
 
 export const ProjectModalContent = ({ project }) => {
     const [showPrivateAlert, setShowPrivateAlert] = useState(false)
@@ -19,7 +22,7 @@ export const ProjectModalContent = ({ project }) => {
             {project.stack?.length ? (
                 <article>
                     <h5 className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-medium-500 dark:text-secundary-300">
-                        Stack
+                        {t.sections.stack}
                     </h5>
                     <ul className="flex flex-wrap gap-2">
                         {project.stack.map((item) => (
@@ -37,7 +40,7 @@ export const ProjectModalContent = ({ project }) => {
             {project.highlights?.length ? (
                 <article>
                     <h5 className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-medium-500 dark:text-secundary-300">
-                        Highlights
+                        {t.sections.highlights}
                     </h5>
                     <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
                         {project.highlights.map((item) => (
@@ -52,7 +55,7 @@ export const ProjectModalContent = ({ project }) => {
             {project.collections?.length ? (
                 <article>
                     <h5 className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-medium-500 dark:text-secundary-300">
-                        Collection
+                        {t.sections.collection}
                     </h5>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                         {project.collections.map((image, index) => {
@@ -85,7 +88,7 @@ export const ProjectModalContent = ({ project }) => {
             {project.links?.length ? (
                 <article>
                     <h5 className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-medium-500 dark:text-secundary-300">
-                        Links
+                        {t.sections.links}
                     </h5>
                     <div className="flex flex-wrap gap-2">
                         {project.links.map((link, index) => {
@@ -118,8 +121,8 @@ export const ProjectModalContent = ({ project }) => {
             <Alert
                 isOpen={showPrivateAlert}
                 onClose={() => setShowPrivateAlert(false)}
-                title="Private link"
-                message="This link is private and cannot be accessed right now."
+                title={t.privateLinkAlert.title}
+                message={t.privateLinkAlert.message}
             />
 
             {previewData ? (
