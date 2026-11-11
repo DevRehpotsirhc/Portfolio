@@ -51,7 +51,18 @@ export const Welcome = ({ contactRef, redirectUrl }) => {
 
     return (
         <>
-            <main id="about" className="block size-full h-svh w-full">
+            <main id="about" className="relative block size-full h-svh w-full">
+                {/* Background */}
+                <div className="background">
+                    <span className="ball"></span>
+                    <span className="ball"></span>
+                    <span className="ball"></span>
+                    <span className="ball"></span>
+                    <span className="ball"></span>
+                    <span className="ball"></span>
+                    <span className="ball"></span>
+                    <span className="ball"></span>
+                </div>
                 <section className="absolute text-dark dark:text-white inset-0 flex flex-col items-start min-[700px]:items-center justify-center p-2 min-[320px]:p-5 min-[400px]:pt-12 min-[700px]:p-12 size-full h-svh w-full overflow-y-auto overflow-x-hidden">
                     <div className="flex relative min-[700px]:h-20 w-full max-w-250 items-end-safe align-middle">
                         <article className="absolute -top-10 right-0 min-[700px]:right-5 z-50">
@@ -64,17 +75,6 @@ export const Welcome = ({ contactRef, redirectUrl }) => {
                                 title={ui.darkModeTitle}
                             />
                         </article>
-                    </div>
-                    {/* Background */}
-                    <div className="background">
-                        <span className="ball"></span>
-                        <span className="ball"></span>
-                        <span className="ball"></span>
-                        <span className="ball"></span>
-                        <span className="ball"></span>
-                        <span className="ball"></span>
-                        <span className="ball"></span>
-                        <span className="ball"></span>
                     </div>
                     <div className="flex relative w-full max-[700px]:flex-col max-w-250 items-center justify-center">
                         {/* Image */}

@@ -39,7 +39,11 @@
   height: 100svh;
   top: 0;
   left: 0;
-  overflow: hidden;
+  /* Clip only sideways (no horizontal scroll) so balls can drift below the
+     hero. z-index -10 keeps them behind every section's content. */
+  overflow-x: clip;
+  overflow-y: visible;
+  pointer-events: none;
 }
 
 .ball {

@@ -45,6 +45,10 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
         return () => window.removeEventListener("resize", handleResize)
     }, [])
 
+    // The contact peek is a one-time hint: once it has played, the header
+    // just appears without re-opening the panel.
+    const hintPlayed = useRef(false)
+
     useEffect(() => {
         if (!showHeader) {
             setToggle(false)
@@ -52,18 +56,17 @@ export const Header = ({ about = "", experience = "", skills = "", projects = ""
             return
         }
 
-        const openTimer = setTimeout(() => {
-            setToggle(true)
-        }, 800)
+        if (hintPlayed.current) return
+
+        // The header arrives with the panel already open, then it closes.
+        hintPlayed.current = true
+        setToggle(true)
 
         const closeTimer = setTimeout(() => {
             setToggle(false)
-        }, 1800)
+        }, 1900)
 
-        return () => {
-            clearTimeout(openTimer)
-            clearTimeout(closeTimer)
-        }
+        return () => clearTimeout(closeTimer)
     }, [showHeader])
 
     const links = [
