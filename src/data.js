@@ -15,7 +15,7 @@ import expertosInventarioData from "./assets/projects/Expertos Inventario/Expert
 import gestionData from "./assets/projects/Gestion/Gestion"
 import sentimentAnalysisData from "./assets/projects/Sentiment Analysis/Sentiment Analysis"
 import taskManData from "./assets/projects/TaskMan/TaskMan"
-import validadorCrcData from "./assets/projects/Validador CRC/Validador CRC"
+import CheckCrcData from "./assets/projects/CheckCRC/CheckCRC"
 
 /* ------------------------------------------------------------------ */
 /* Personal info                                                      */
@@ -99,7 +99,7 @@ export const ui = {
         nextImage: "Next image",
         prevProject: "Previous project",
         nextProject: "Next project",
-        prevShort: "Previous",
+        prevShort: "Prev",
         nextShort: "Next",
         projectNavLabel: "Project navigation",
         slidesNavLabel: "Project images",
@@ -223,8 +223,14 @@ export const technicalSkills = {
     Backend: [
         ["Python", "python", "#FDE68A", "#306998"],
         ["Django REST framework", "django", "#BBF7D0", "#166534"],
+        ["PHP", "php", "#C7D2FE", "#4338CA"],
+        ["Composer", "composer", "#FDE68A", "#885630"],
+        ["C#", "csharp", "#D8B4FE", "#7E22CE"],
+        [".NET Framework", "dotnet", "#C4B5FD", "#6D28D9"],
+        ["Visual Basic", "visualbasic", "#DDD6FE", "#7C3AED"],
         ["MongoEngine", "mongodb", "#86EFAC", "#166534"],
-        ["JWT", "jwt", "#CBD5E1", "#334155"]
+        ["JWT", "jwt", "#CBD5E1", "#334155"],
+        ["Swagger", "swagger", "#D9F99D", "#65A30D"]
     ],
     Databases: [
         ["PostgreSQL", "postgresql", "#BFDBFE", "#1D4ED8"],
@@ -248,15 +254,18 @@ export const technicalSkills = {
     ],
     Frontend: [
         ["JavaScript", "javascript", "#FDE047", "#A16207"],
+        ["TypeScript", "typescript", "#BFDBFE", "#007ACC"],
         ["React", "react", "#A5F3FC", "#0891B2"],
         ["HTML5", "html5", "#FDBA74", "#EA580C"],
         ["CSS3", "css3", "#93C5FD", "#2563EB"],
         ["Tailwind", "tailwindcss", "#99F6E4", "#0F766E"],
         ["Maizzle", "maizzle", "#C4B5FD", "#6D28D9"],
-        ["Chart.js", "chartjs", "#F9A8D4", "#BE185D"]
+        ["Chart.js", "chartjs", "#F9A8D4", "#BE185D"],
+        ["WordPress", "wordpress", "#BAE6FD", "#21759B"]
     ],
     Testing: [
         ["PyTest", "pytest", "#99F6E4", "#0F766E"],
+        ["PHPUnit", "phpunit", "#C7D2FE", "#3C5A99"],
         ["Selenium", "selenium", "#86EFAC", "#15803D"],
         ["Playwright", "playwright", "#A7F3D0", "#047857"],
         ["Storybook", "storybook", "#FDA4AF", "#E11D48"],
@@ -265,23 +274,22 @@ export const technicalSkills = {
     "DevOps / Tools": [
         ["Docker", "docker", "#93C5FD", "#2563EB"],
         ["Git", "git", "#FDBA74", "#C2410C"],
-        ["GitHub", "github", "#CBD5E1", "#1E293B"]
+        ["GitHub", "github", "#CBD5E1", "#1E293B"],
+        ["Bash", "gnubash", "#86EFAC", "#15803D"]
+    ],
+    Security: [
+        ["Nmap", "nmap", "#A5F3FC", "#0E7490"],
+        ["Wireshark", "wireshark", "#BFDBFE", "#1679A7"]
     ],
     "Spreadsheets and BI": [
         ["Excel", "microsoftexcel", "#86EFAC", "#15803D"],
         ["Power BI", "powerbi", "#FDE68A", "#CA8A04"]
     ],
     Others: [
-        ["Bash", "gnubash", "#86EFAC", "#15803D"],
-        ["Swagger", "swagger", "#D9F99D", "#65A30D"],
-        ["C#", "csharp", "#D8B4FE", "#7E22CE"],
-        [".NET Framework", "dotnet", "#C4B5FD", "#6D28D9"],
-        ["PHP", "php", "#C7D2FE", "#4338CA"],
-        ["Visual Basic", "visualbasic", "#DDD6FE", "#7C3AED"],
+        ["n8n", "n8n", "#FDA4AF", "#E11D48"],
         ["Draw.io", "diagramsdotnet", "#FDBA74", "#EA580C"],
         ["Photoshop", "adobephotoshop", "#93C5FD", "#2563EB"],
-        ["Davinci Resolve", "davinciresolve", "#A5B4FC", "#4F46E5"],
-        ["n8n", "n8n", "#FDA4AF", "#E11D48"]
+        ["Davinci Resolve", "davinciresolve", "#A5B4FC", "#4F46E5"]
     ]
 }
 
@@ -343,7 +351,7 @@ export const projects = {
     ...expertosInventarioData,
     ...sentimentAnalysisData,
     ...taskManData,
-    ...validadorCrcData,
+    ...CheckCrcData,
     ...gestionData
 }
 
@@ -360,9 +368,9 @@ export const projects = {
 /* escaped automatically.                                             */
 /* ------------------------------------------------------------------ */
 export const cv = {
-    fullName: "Christopher José Aponte Ovalles",
-    headline: "Full Stack Developer",
-    location: "Bogotá D.C., Colombia",
+    fullName: "Christopher Jose Aponte Ovalles",
+    headline: "Full Stack Developer & Data Scientist",
+    location: "Bogota D.C., Colombia",
     summary: "Full Stack Software Developer and Data Scientist with more than two years of experience in process automation, financial data analysis, AI model training, and backend/frontend solution development. Experienced in REST API development, ETL processes, data visualization, and software testing. Proactive, adaptable, and results-oriented professional with strong analytical and problem-solving skills.",
     education: [
         {
@@ -388,6 +396,7 @@ export const cv = {
             ["Frontend", "Frontend"],
             ["Testing", "Testing"],
             ["DevOps / Tools", "DevOps / Tools"],
+            ["Security", "Security"],
             ["Business Intelligence", "Spreadsheets and BI"],
             ["Others", "Others"]
         ],
