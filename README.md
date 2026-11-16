@@ -4,7 +4,7 @@
     <a href="mailto:christopher4ponte@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-2563EB?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>&nbsp;&nbsp;
     <a href="https://wa.me/573194749249?text=Hi%20I%20come%20from%20your%20portfolio,%20I%20would%20be%20interested%20in%20talking%20to%20you"><img src="https://img.shields.io/badge/WhatsApp-Contact-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp"></a>&nbsp;&nbsp;
     <a href="https://www.linkedin.com/in/christopher-aponte/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;&nbsp;
-    <a href="https://devrehpotsirhc.github.io/Portfolio"><img src="https://img.shields.io/badge/Portfolio-Visit-0F766E?style=for-the-badge&logo=githubpages&logoColor=white" alt="Portfolio"></a>
+    <a href="https://christopher.it.com"><img src="https://img.shields.io/badge/Portfolio-Visit-0F766E?style=for-the-badge&logo=githubpages&logoColor=white" alt="Portfolio"></a>
 </p>
 
 Hi, I'm *Christopher Aponte*, national winner in the artificial intelligence category with `IBM` as judge. Software developer and data scientist with over 2 years of experience in backend, data analytics, and AI training.
@@ -17,7 +17,7 @@ if __name__ == '__main__':
         print("Now you'll see a summary of my portfolio :D")
 ```
 
-**Live site:** https://devrehpotsirhc.github.io/Portfolio
+**Live site:** https://christopher.it.com
 
 # About this project
 
@@ -116,7 +116,7 @@ When the content changes:
 2. Update `<lastmod>` in `public/sitemap.xml`.
 3. If the name or headline changes, regenerate `public/og-image.png` (1200×630).
 
-> GitHub Pages serves this site under `/Portfolio`, and crawlers only read `robots.txt` at the domain root. Submit `https://devrehpotsirhc.github.io/Portfolio/sitemap.xml` in [Google Search Console](https://search.google.com/search-console) to get the site indexed. You can check link previews with the [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/).
+> The site is served from the custom domain `christopher.it.com` (configured via `public/CNAME`), so crawlers read `robots.txt` at the root. Submit `https://christopher.it.com/sitemap.xml` in [Google Search Console](https://search.google.com/search-console) to get the site indexed. You can check link previews with the [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/).
 
 ## Project structure
 
