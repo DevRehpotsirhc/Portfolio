@@ -151,9 +151,9 @@ export const experience = {
         technologies: ["Python", "Django Rest Framework", "JavaScript", "React", "Linux", "Docker", "GitHub"],
         // Optional summary tiles shown on the timeline card
         kpis: [
-            { value: "98.75%", label: "Faster CRM queries", detail: "40 s → 0.5 s on 60K+ records" },
-            { value: "4", label: "Bank audits supported", detail: "90% – 100% compliance" },
-            { value: "6+", label: "Internal tools & bots", detail: "Inventory, OCR, network & status bots, scraping" }
+            { value: "98.75%", label: "Faster CRM queries", detail: "from 40 sec. to 0.5 sec. on 60K+ records on old database" },
+            { value: "7+", label: "Internal tools developed", detail: "Inventory, OCR, network & status bots, scraping" },
+            { value: "3+", label: "Revamped applications", detail: "Functionalities, interfaces, and performance" }
         ],
         // Only entries with a `cv` block appear in the CV (npm run cv)
         cv: {
@@ -162,13 +162,12 @@ export const experience = {
             period: ["August 2024", "Currently"],
             bullets: [
                 "Developed Expertos Inventario, an internal inventory and purchasing platform (Django REST Framework, React, PostgreSQL) with JWT authentication, roles and permissions, a real-time KPI dashboard, low-stock alerts, and supplier and purchase order management.",
-                "Led audit support for Incocrédito (99% compliance), Banco Popular (90%) and Banco de Occidente (100%), presenting results through an interactive graphical interface for ease of use during the audit.",
                 "Optimized the company's legacy CRM database queries (60K+ records) with LIMIT/OFFSET pagination and stored procedures, cutting response time by 98.75% (from 40 s to 0.5 s).",
                 "Built OCR Extractor, a tool that extracts text from PDFs and images and loads it into the database.",
                 "Developed a service and printer status reporting bot with network scanning, using Python, Playwright, Tkinter (GUI), Nmap, and Wireshark.",
                 "Created CheckCRC, an application for validating phone numbers against the CRC.",
                 "Managed the company's WordPress landing page and implemented security measures after an impersonation attempt.",
-                "Built OnScrapping, a Python and Playwright bot that simulates a webhook for client filing status with Banco Popular on a legacy Flash 11.5 platform."
+                "Built OnScrapping, a Python and Playwright bot that simulates a webhook for client filing status on a legacy Flash 11.5 platform."
             ]
         }
     },
