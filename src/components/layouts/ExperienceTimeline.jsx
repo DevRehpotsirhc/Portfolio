@@ -43,9 +43,9 @@ export const ExperienceTimeline = ({ data = experience }) => {
                             <span className="timeline-dot absolute left-0 top-6 size-3 -translate-x-[0.41rem] rounded-full border-2 border-white bg-medium-500 shadow-sm dark:border-background-dark dark:bg-secundary-400 md:left-1/2 md:-translate-x-1/2"></span>
 
                             <div className={`${isLeft ? "md:col-start-1 md:mr-8" : "md:col-start-2 md:ml-8"}`}>
-                                <div className="rounded-xl border border-slate-300/80 bg-white/80 p-4 shadow-md shadow-slate-300/40 backdrop-blur-sm dark:border-dark/60 dark:bg-dark/30 dark:shadow-secundary-900/30">
+                                <div className="game-card rounded-xl bg-white/80 p-4 backdrop-blur-sm dark:bg-dark/30">
                                     <div className="mb-2 flex flex-wrap items-center gap-2">
-                                        <span className="rounded-md bg-medium-100 px-2 py-1 text-xs font-semibold text-medium-700 dark:bg-secundary-900 dark:text-secundary-200">{item.years}</span>
+                                        <span className="game-chip rounded-md border-medium-200 border-b-medium-300 bg-medium-100 px-2 py-1 dark:border-secundary-800 dark:border-b-secundary-700 text-xs font-semibold text-medium-700 dark:bg-secundary-900 dark:text-secundary-200">{item.years}</span>
                                         <h3 className="text-lg font-semibold text-dark dark:text-white" translate="no">{item.company}</h3>
                                     </div>
 
@@ -55,7 +55,7 @@ export const ExperienceTimeline = ({ data = experience }) => {
                                     {item.kpis?.length ? (
                                         <dl aria-label={ui.experience.kpisLabel} className="mt-4 grid grid-cols-1 gap-2 min-[420px]:grid-cols-3">
                                             {item.kpis.map((kpi) => (
-                                                <div key={`${item.company}-${kpi.label}`} title={kpi.detail} className="flex flex-col-reverse rounded-lg border border-medium-200/70 bg-medium-50/60 px-3 py-2 dark:border-secundary-800/70 dark:bg-secundary-950/40">
+                                                <div key={`${item.company}-${kpi.label}`} title={kpi.detail} className="game-chip flex flex-col-reverse rounded-lg border-medium-200 border-b-medium-300 bg-medium-50/60 px-3 py-2 dark:border-secundary-800/70 dark:border-b-secundary-700 dark:bg-secundary-950/40">
                                                     <dt className="text-xs leading-4 text-slate-600 dark:text-slate-300">
                                                         {kpi.label}
                                                         {kpi.detail ? <span className="mt-0.5 block text-[11px] text-slate-500 dark:text-slate-400">{kpi.detail}</span> : null}

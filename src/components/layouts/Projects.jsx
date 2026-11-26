@@ -373,7 +373,7 @@ export const Projects = () => {
             </div>
 
             <div className="relative">
-                <article className="rounded-3xl border border-slate-300/80 bg-white/80 p-5 shadow-md shadow-slate-300/40 backdrop-blur-sm dark:border-dark/60 dark:bg-dark/30 dark:shadow-secundary-900/30">
+                <article className="game-panel rounded-3xl bg-white/80 p-5 backdrop-blur-sm dark:bg-dark/30">
 
                 <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_16rem]">
                     <article
@@ -383,7 +383,7 @@ export const Projects = () => {
                         onTouchEnd={handleImageTouchEnd}
                         onTouchCancel={handleImageTouchCancel}
                         onKeyDown={handleCarouselKeyDown}
-                        className="group relative h-120 w-full overflow-hidden rounded-4xl bg-medium-500 dark:bg-dark text-left cursor-pointer"
+                        className="group relative h-120 w-full overflow-hidden rounded-4xl border-2 border-b-8 border-medium-700 bg-medium-500 shadow-[inset_0_2px_0_rgb(255_255_255/0.25),0_20px_40px_-22px_rgb(71_69_204/0.6)] dark:border-[#16334d] dark:bg-dark dark:shadow-[0_20px_40px_-22px_rgb(69_202_204/0.35)] text-left cursor-pointer"
                     >
                         {/* Transparent full-area button: opens details without nesting the arrow buttons inside it */}
                         <button
@@ -492,7 +492,7 @@ export const Projects = () => {
                         </div>
                     </article>
 
-                    <aside className="flex max-h-88 self-start flex-col overflow-hidden rounded-2xl border border-medium-300 bg-background-light/70 dark:border-dark/70 dark:bg-background-dark/65 md:max-h-120">
+                    <aside className="game-panel flex max-h-88 self-start flex-col overflow-hidden rounded-2xl bg-background-light/70 dark:bg-background-dark/65 md:max-h-120">
                         <p className="z-20 border-b border-medium-300/70 bg-background-light/95 px-3 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-medium-600 backdrop-blur-sm dark:border-dark/70 dark:bg-background-dark/95 dark:text-secundary-300">{t.moreProjects}</p>
                         <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto p-2">
                             {projectEntries.map((project, index) => {
@@ -505,11 +505,8 @@ export const Projects = () => {
                                     key={project.id}
                                     type="button"
                                     onClick={() => quickSelectProject(index)}
-                                    className={`group relative min-h-24 w-full overflow-hidden rounded-xl border text-left cursor-pointer transition-[border-color,box-shadow,translate] duration-300 hover:-translate-y-0.5 active:translate-y-0 ${
-                                        isActive
-                                            ? "border-medium-500 ring-2 ring-medium-500/30 dark:border-secundary-500 dark:ring-secundary-500/30"
-                                            : "border-medium-200 dark:border-dark/70"
-                                    }`}
+                                    data-active={isActive ? "true" : "false"}
+                                    className="game-card group relative mb-1.5 min-h-24 w-full shrink-0 overflow-hidden rounded-xl text-left cursor-pointer"
                                 >
                                     <img src={slide.image} alt={`${project.name} preview`} className="absolute inset-0 h-full w-full object-cover transition-[scale] duration-500 group-hover:scale-105" loading="lazy" />
                                     <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/30 to-black/70" />

@@ -36,7 +36,7 @@ const SoftSkillCard = ({ name, content }) => {
     const fadeMask = `linear-gradient(to bottom, transparent 0, #000 ${showTop ? "1.25rem" : "0px"}, #000 calc(100% - ${showBottom ? "1.25rem" : "0px"}), transparent 100%)`
 
     return (
-        <Card className="group @container min-h-40 w-full items-start overflow-hidden rounded-xl border-slate-300/80 bg-slate-50/75 p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-slate-300/40 dark:border-dark/70 dark:bg-dark/35 dark:hover:shadow-secundary-900/30">
+        <Card className="group @container min-h-40 w-full items-start overflow-hidden rounded-xl bg-slate-50/75 p-4 text-left dark:bg-dark/35">
             <div className="flex w-full min-w-0 flex-wrap items-center gap-3">
                 <div className={`grid shrink-0 place-items-center rounded-md ring-1 size-[clamp(2rem,13cqi,2.5rem)] ${content.iconClassName}`}>
                     <Icon className="size-[clamp(1rem,8cqi,1.25rem)]" strokeWidth={2.2} aria-hidden="true" />
@@ -64,7 +64,7 @@ export const SoftSkills = () => {
     const softSkills = useMemo(() => Object.entries(softSkillsData), [])
 
     return (
-        <article className="rounded-2xl border border-slate-300/80 bg-white/80 p-5 shadow-md shadow-slate-300/40 backdrop-blur-sm dark:border-dark/60 dark:bg-dark/30 dark:shadow-secundary-900/30">
+        <article className="game-panel rounded-2xl bg-white/80 p-5 backdrop-blur-sm dark:bg-dark/30">
             <header className="mb-4">
                 <h3 className="text-lg font-semibold text-dark dark:text-white">{ui.skills.soft.title}</h3>
             </header>

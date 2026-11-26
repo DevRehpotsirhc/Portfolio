@@ -5,7 +5,7 @@ import { useClickOutside } from "../../hooks/useClickOutside"
 import { usePresence } from "../../hooks/usePresence"
 
 const overlayBaseStyles = "fixed inset-0 z-100 flex items-center justify-center bg-slate-950/70 p-3 sm:p-6 backdrop-blur-sm"
-const panelBaseStyles = "max-h-[88svh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-slate-300 bg-background-light px-4 pb-4 pt-0 shadow-2xl dark:border-slate-700 dark:bg-background-dark sm:px-6 sm:pb-6 sm:pt-0"
+const panelBaseStyles = "game-panel max-h-[88svh] w-full max-w-5xl overflow-y-auto rounded-2xl bg-background-light px-4 pb-4 pt-0 dark:bg-background-dark sm:px-6 sm:pb-6 sm:pt-0"
 const headerBaseStyles = "sticky top-0 z-20 -mx-4 mb-5 flex items-start justify-between gap-4 border-b border-slate-300/80 bg-background-light/95 px-4 py-3 backdrop-blur-sm dark:border-slate-700 dark:bg-background-dark/95 sm:-mx-6 sm:px-6 sm:py-4"
 
 export const Modal = ({
@@ -72,7 +72,7 @@ export const Modal = ({
                         title="Close"
                         aria-label="Close modal"
                         onClick={onClose}
-                        className="inline-flex size-9 min-w-9 min-h-9 shrink-0 grow-0 items-center justify-center rounded-lg border border-slate-300 bg-white text-slate-600 transition-colors hover:bg-slate-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 cursor-pointer"
+                        className="inline-flex size-9 min-w-9 min-h-9 shrink-0 grow-0 items-center justify-center rounded-lg border border-b-4 border-slate-300 border-b-slate-400 bg-white text-slate-600 transition-[translate,border-width,background-color] duration-200 hover:-translate-y-0.5 hover:bg-danger-500 hover:border-danger-600 hover:text-white active:translate-y-0.5 active:border-b-2 active:duration-75 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-danger-600 dark:hover:border-danger-700 cursor-pointer"
                     >
                         <X className="size-4" />
                     </button>

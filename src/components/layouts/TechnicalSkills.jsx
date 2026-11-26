@@ -29,7 +29,7 @@ export const TechnicalSkills = () => {
 
     return (
         <>
-            <article className="rounded-2xl border border-slate-300/80 bg-white/80 p-5 shadow-md shadow-slate-300/40 backdrop-blur-sm dark:border-dark/60 dark:bg-dark/30 dark:shadow-secundary-900/30">
+            <article className="game-panel rounded-2xl bg-white/80 p-5 backdrop-blur-sm dark:bg-dark/30">
                 <header className="mb-4">
                     <h3 className="text-lg font-semibold text-dark dark:text-white">{t.title}</h3>
                 </header>
@@ -38,7 +38,7 @@ export const TechnicalSkills = () => {
                     {technicalMain.map(({ name, iconPath, colors, keepOriginalColors }, index) => (
                         <Reveal key={name} className="flex" delay={Math.min(index * 60, 300)}>
                         <Card
-                            className="group min-h-28 justify-center gap-2 rounded-xl px-3 py-4 transition-[translate,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                            className="group min-h-28 justify-center gap-2 rounded-xl px-3 py-4"
                             lightModeBgColor={colors.light}
                             darkModeBgColor={colors.dark}
                         >

@@ -93,7 +93,7 @@ export const ProjectModalContent = ({ project }) => {
                         {project.stack.map((item) => (
                             <li
                                 key={`${project.id}-${item}`}
-                                className="rounded-lg border border-slate-300 bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                                className="game-chip rounded-lg border-slate-300 border-b-slate-400 bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:border-slate-700 dark:border-b-slate-600 dark:bg-slate-800 dark:text-slate-200"
                             >
                                 {item}
                             </li>
@@ -109,7 +109,7 @@ export const ProjectModalContent = ({ project }) => {
                     </h5>
                     <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
                         {project.highlights.map((item) => (
-                            <li key={`${project.id}-${item}`} className="rounded-lg border border-slate-300/70 bg-white px-3 py-2 dark:border-slate-700 dark:bg-slate-900/40">
+                            <li key={`${project.id}-${item}`} className="game-chip rounded-lg border-slate-300 border-b-slate-400 bg-white px-3 py-2 dark:border-slate-700 dark:border-b-slate-600 dark:bg-slate-900/40">
                                 {item}
                             </li>
                         ))}
@@ -133,7 +133,7 @@ export const ProjectModalContent = ({ project }) => {
                             return (
                                 <figure
                                     key={`${project.id}-collection-${index}`}
-                                    className={`group relative min-h-24 overflow-hidden rounded-xl border border-slate-300/70 bg-slate-100 dark:border-slate-700 dark:bg-slate-900/40 cursor-pointer ${collageClass}`}
+                                    className={`game-card group relative mb-1.5 min-h-24 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900/40 cursor-pointer ${collageClass}`}
                                 >
                                     <img
                                         ref={(element) => { thumbnailRefs.current[index] = element }}
@@ -174,7 +174,7 @@ export const ProjectModalContent = ({ project }) => {
                                         event.preventDefault()
                                         setShowPrivateAlert(true)
                                     }}
-                                    className="rounded-lg border border-medium-500/80 bg-medium-500 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-medium-600 dark:border-secundary-600 dark:bg-secundary-600 dark:hover:bg-secundary-700"
+                                    className="inline-block rounded-lg border border-b-4 border-medium-700 bg-medium-500 px-3 py-2 text-xs font-semibold text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.3)] transition-[translate,border-width,background-color] duration-200 hover:-translate-y-0.5 hover:bg-medium-600 active:translate-y-0.5 active:border-b-2 active:duration-75 dark:border-secundary-800 dark:bg-secundary-600 dark:hover:bg-secundary-700"
                                 >
                                     {link.label}
                                 </a>

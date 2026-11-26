@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { AlertTriangle, X } from "lucide-react"
 import { usePresence } from "../../hooks/usePresence"
 
-const infoStyles = "border-medium-500/80 bg-medium-500/80 text-white shadow-medium-500/25 dark:border-secundary-500/80 dark:bg-secundary-500/75 dark:text-secundary-50 dark:shadow-secundary-500/25"
+const infoStyles = "border-medium-700 bg-medium-500/90 text-white shadow-medium-500/25 dark:border-secundary-800 dark:bg-secundary-600/90 dark:text-secundary-50 dark:shadow-secundary-500/25"
 
 export const Alert = ({
     isOpen,
@@ -92,7 +92,7 @@ export const Alert = ({
         <div className="pointer-events-none fixed bottom-5 right-4 z-130 w-[min(92vw,24rem)] sm:bottom-6 sm:right-6" role="status" aria-live="polite">
             <article
                 data-state={state}
-                className={`motion-toast pointer-events-auto rounded-2xl border px-4 py-3 shadow-xl backdrop-blur-md ${infoStyles}`}
+                className={`motion-toast pointer-events-auto rounded-2xl border border-b-6 px-4 py-3 shadow-xl backdrop-blur-md ${infoStyles}`}
                 role="alert"
                 onMouseEnter={pauseAutoClose}
                 onMouseLeave={resumeAutoClose}
